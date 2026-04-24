@@ -4644,6 +4644,71 @@
                 </div>
             </div>
 
+            <div class="recipe-card"
+                 data-symptoms="no-appetite"
+                 data-texture="soft"
+                 data-calories="490"
+                 data-protein="34">
+                <div class="card-header">
+                    <h3>Soft Chicken Tacos with Avocado</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 25 minutes &nbsp;|&nbsp; Stovetop</p>
+                <div class="recipe-note">
+                    Chemo-friendly tacos with no hot sauce, no raw onion, no spicy seasoning. Shredded chicken is simmered in broth until fall-apart tender, then tucked into warm soft flour tortillas with creamy mashed avocado. Easy to eat one small taco at a time when appetite is low.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>2 boneless skinless chicken thighs (about 8 oz)</li>
+                            <li>1 cup low-sodium chicken broth</li>
+                            <li>&frac14; tsp salt</li>
+                            <li>&frac12; tsp cumin (optional — skip if scents bother you)</li>
+                            <li>4 small soft flour tortillas</li>
+                            <li>1 ripe avocado</li>
+                            <li>Pinch of salt for avocado</li>
+                            <li>Optional: 2 tbsp plain Greek yogurt or dairy-free sour cream</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Place chicken thighs in a small saucepan. Pour broth over them. Add salt and cumin.</li>
+                            <li>Bring to a gentle simmer, cover, and cook 15–18 minutes until chicken is very tender.</li>
+                            <li>Remove chicken and shred with two forks. Spoon a little broth over the shredded chicken to keep it moist.</li>
+                            <li>Mash avocado with a pinch of salt until smooth and creamy.</li>
+                            <li>Warm tortillas in a dry pan for 30 seconds each side, or wrap in a damp paper towel and microwave 20 seconds.</li>
+                            <li>Fill each tortilla with shredded chicken and a spoonful of avocado mash. Serve immediately.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~490 calories</span>
+                    <span>34g protein</span>
+                    <span>22g fat</span>
+                    <span>36g carbs</span>
+                    <span>Dairy-free option</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Gentle)</h4>
+                    <ul>
+                        <li>Use the full avocado split across fewer tortillas — adds ~80 cal</li>
+                        <li>Drizzle 1 tsp olive oil over chicken before filling — adds ~40 cal</li>
+                        <li>Add a dollop of plain Greek yogurt — adds ~30 cal &amp; extra protein</li>
+                        <li>Serve with a side of soft mashed sweet potato — adds ~150 cal</li>
+                    </ul>
+                </div>
+            </div>
+
             </div><!-- end section-body dinner -->
         </section>
 
@@ -4918,6 +4983,7 @@
             'Simple Turkey & Rice Skillet':                  ['turkey'],
             'Soft Turkey Meatloaf Muffins':                  ['turkey', 'egg'],
             'Ground Turkey & Sweet Potato Hash':             ['turkey'],
+            'Soft Chicken Tacos with Avocado':               ['chicken'],
         };
 
         const TAG_LABELS = { chicken:'Chicken', turkey:'Turkey', beef:'Beef', egg:'Egg', tofu:'Tofu', vegetarian:'Vegetarian' };
@@ -5576,6 +5642,12 @@
                 'Sweet potato → Yukon gold potato, butternut squash, or parsnip',
                 'Cinnamon → a pinch of cumin, or skip entirely',
                 'Olive oil → avocado oil; or skip and use more broth',
+            ],
+            'Soft Chicken Tacos with Avocado': [
+                'Chicken thighs → chicken breast or shredded poached turkey',
+                'Flour tortillas → soft corn tortillas or warm flatbread',
+                'Avocado → plain Greek yogurt mashed with salt for a creamy swap',
+                'Cumin → skip entirely if smells trigger nausea; use a pinch of salt only',
             ],
         };
 
