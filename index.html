@@ -172,6 +172,20 @@
         .upcoming-item button { background: none; border: none; color: #c28b5e; cursor: pointer; font-size: 1.1rem; flex-shrink: 0; }
         .upcoming-item button:hover { color: #8b5e3c; }
 
+        /* Substitutions panel */
+        .btn-subs {
+            padding: 0.5rem 1.25rem; background: none; border: 1px solid #7aab90;
+            border-radius: 20px; color: #2d6a4f; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
+        }
+        .btn-subs:hover { background-color: #e8f4ee; }
+        .subs-panel { margin-top: 1rem; background-color: #f0faf4; border: 1px dashed #7aab90; border-radius: 8px; padding: 1rem 1.25rem; display: none; }
+        .subs-panel.open { display: block; }
+        .subs-panel h4 { color: #2d6a4f; margin-bottom: 0.75rem; font-size: 0.95rem; }
+        .subs-panel ul { list-style: none; padding: 0; }
+        .subs-panel ul li { padding: 0.35rem 0; font-size: 0.9rem; display: flex; gap: 0.5rem; border-bottom: 1px solid #d0ead8; }
+        .subs-panel ul li:last-child { border-bottom: none; }
+        .subs-panel ul li::before { content: "⇄"; color: #7aab90; font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+
         /* Caregiver tip groups */
         .tip-group {
             background-color: #fff8f0; border: 1px solid #e0c4a8; border-radius: 10px;
@@ -2229,6 +2243,173 @@
         document.getElementById('cal-task-name').addEventListener('keydown', e => { if (e.key === 'Enter') saveCalEvent(); });
 
         renderCalendar();
+
+        // --- Substitutions ---
+        const SUBSTITUTIONS = {
+            'High-Calorie Vanilla Milkshake': [
+                'Whole milk → oat milk or coconut milk if dairy causes issues',
+                'Vanilla ice cream → coconut ice cream for dairy-free',
+                'Heavy cream → full-fat coconut cream (same richness)',
+                'Honey → maple syrup or agave nectar',
+                'Powdered whole milk → powdered oat milk or skip entirely',
+            ],
+            'Banana Ginger Smoothie': [
+                'Whole milk → oat milk or almond milk',
+                'Vanilla yogurt → coconut yogurt for dairy-free',
+                'Honey → maple syrup or agave',
+                'Ginger too strong → reduce to a pinch or skip on sensitive days',
+                'Frozen banana → fresh banana plus extra ice',
+            ],
+            'Chocolate Peanut Butter Shake': [
+                'Whole milk → oat milk or coconut milk',
+                'Peanut butter → sunflower seed butter if nut allergy',
+                'Chocolate ice cream → vanilla ice cream plus extra cocoa powder',
+                'Honey → maple syrup',
+                'Cocoa powder → carob powder for a milder flavor',
+            ],
+            'Mango Peach Creamsicle Smoothie': [
+                'Frozen mango → canned mango in juice, drained',
+                'Frozen peach → canned peaches in juice, drained',
+                'Whole milk → oat milk or almond milk',
+                'Vanilla yogurt → coconut yogurt for dairy-free',
+                'Honey → maple syrup',
+            ],
+            'Strawberry Vanilla Cream Smoothie': [
+                'Whole milk → oat milk',
+                'Vanilla ice cream → coconut ice cream for dairy-free',
+                'Heavy cream → coconut cream',
+                'Strawberries → raspberries or blueberries if preferred',
+                'Honey → maple syrup',
+            ],
+            'Avocado Honey Smoothie': [
+                'Whole milk → oat milk or coconut milk',
+                'Vanilla yogurt → coconut yogurt or silken tofu blended smooth',
+                'Honey → maple syrup',
+                'Avocado → ripe banana for creaminess if avocado unavailable',
+            ],
+            'Blueberry Oat Smoothie': [
+                'Whole milk → oat milk',
+                'Vanilla yogurt → coconut yogurt for dairy-free',
+                'Peanut butter → sunflower seed butter or almond butter',
+                'Blueberries → any soft frozen berry',
+                'Honey → maple syrup',
+            ],
+            'Creamy Potato Leek Soup': [
+                'Butter → olive oil or dairy-free butter',
+                'Heavy cream → coconut cream or oat cream',
+                'Chicken broth → vegetable broth for vegetarian',
+                'Leeks → mild onion if leeks are unavailable',
+                'Yukon Gold potatoes → russet potatoes work fine',
+            ],
+            'Pureed Butternut Squash Soup': [
+                'Butter → olive oil',
+                'Heavy cream → full-fat coconut milk (adds slight sweetness)',
+                'Chicken broth → vegetable broth',
+                'Butternut squash → sweet potato for a similar texture',
+                'Nutmeg → skip if the smell is unappealing',
+            ],
+            'Creamy Chicken Noodle Soup': [
+                'Egg noodles → rice noodles or soft pasta for gluten-free',
+                'Heavy cream → oat cream or coconut cream',
+                'Chicken → soft turkey or silken tofu for protein',
+                'Chicken broth → vegetable broth',
+                'Carrots → zucchini if a softer texture is needed',
+            ],
+            'Sweet Corn Chowder': [
+                'Heavy cream → coconut cream',
+                'Butter → olive oil',
+                'Chicken broth → vegetable broth',
+                'Frozen corn → canned corn, drained',
+            ],
+            'Broccoli Cheddar Soup': [
+                'Mild cheddar → Gruyère or mild Swiss for a gentler flavor',
+                'Heavy cream → oat cream',
+                'All-purpose flour → 1½ tbsp cornstarch for gluten-free',
+                'Chicken broth → vegetable broth',
+                'Broccoli → cauliflower if the smell of broccoli is off-putting',
+            ],
+            'Buttery Mashed Potatoes': [
+                'Butter → olive oil or dairy-free butter',
+                'Heavy cream → oat cream or coconut cream',
+                'Whole milk → oat milk or almond milk',
+                'Yukon Gold → russet potatoes work fine',
+            ],
+            'Soft Scrambled Eggs with Cream Cheese': [
+                'Cream cheese → ricotta or goat cheese',
+                'Butter → olive oil',
+                'Whole milk → oat milk',
+                'Eggs → soft silken tofu scramble if eggs are unappealing',
+            ],
+            'Banana Oatmeal with Honey': [
+                'Whole milk → oat milk or almond milk',
+                'Honey → maple syrup',
+                'Butter → coconut oil',
+                'Banana → ripe mashed pear or applesauce',
+                'Rolled oats → quick oats for a smoother texture',
+            ],
+            'Creamy Avocado on Soft White Bread': [
+                'Cream cheese → hummus for dairy-free',
+                'Soft white bread → soft gluten-free bread',
+                'Honey → maple syrup',
+                'Avocado → well-mashed banana if avocado is unavailable',
+            ],
+            'Honey Ricotta Bowl': [
+                'Ricotta → cottage cheese blended smooth',
+                'Honey → maple syrup or agave',
+                'Vanilla extract → almond extract for a different flavor',
+                'Whole milk ricotta → part-skim works but is slightly less creamy',
+            ],
+            'Greek Yogurt with Honey and Banana': [
+                'Greek yogurt → coconut yogurt for dairy-free',
+                'Banana → ripe pear slices or canned peaches',
+                'Honey → maple syrup',
+                'Plain yogurt → vanilla yogurt if plain feels too tart',
+            ],
+            'Peanut Butter and Honey on Soft Crackers': [
+                'Peanut butter → sunflower seed butter if nut allergy',
+                'Ritz crackers → rice crackers for gluten-free',
+                'Honey → maple syrup',
+                'Almond butter is a mild easy swap for peanut butter',
+            ],
+            'Mild Cheese and Soft Crackers': [
+                'Cheddar → Brie or Muenster for a milder softer texture',
+                'Ritz crackers → rice crackers for gluten-free',
+                'Add a thin layer of cream cheese under the cheese for extra softness',
+            ],
+            'Homemade Vanilla Pudding': [
+                'Whole milk → oat milk or coconut milk',
+                'Butter → dairy-free butter or coconut oil',
+                'Cornstarch → arrowroot powder (same amount)',
+                'Granulated sugar → maple syrup (reduce to ¼ cup)',
+            ],
+            'Cottage Cheese with Soft Fruit': [
+                'Cottage cheese → ricotta blended smooth for a silkier texture',
+                'Canned peaches → any soft canned fruit in juice drained',
+                'Honey → maple syrup',
+                'Fresh banana slices work well in place of canned fruit',
+            ],
+        };
+
+        function toggleSubs(btn) {
+            const panel = btn.closest('.recipe-card').querySelector('.subs-panel');
+            panel.classList.toggle('open');
+            btn.textContent = panel.classList.contains('open') ? '⇄ Substitutions ▲' : '⇄ Substitutions';
+        }
+
+        document.querySelectorAll('.recipe-card').forEach(card => {
+            const name = card.querySelector('h3').textContent.trim();
+            const subs = SUBSTITUTIONS[name];
+            if (!subs) return;
+            const btn = document.createElement('button');
+            btn.className = 'btn-subs';
+            btn.textContent = '⇄ Substitutions';
+            btn.onclick = () => toggleSubs(btn);
+            card.querySelector('.card-actions').appendChild(btn);
+            const panel = document.createElement('div');
+            panel.className = 'subs-panel';
+            panel.innerHTML = `<h4>Ingredient Substitutions</h4><ul>${subs.map(s => `<li>${s}</li>`).join('')}</ul>`;
+            card.appendChild(panel);
+        });
     </script>
 </body>
 </html>
