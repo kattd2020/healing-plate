@@ -224,6 +224,7 @@
         .badge-liquid { background-color: #e8d5f0; color: #5a3070; }
         .badge-soft { background-color: #fde8d8; color: #8b3a0a; }
         .badge-finger-food { background-color: #d4f0e8; color: #1a5c45; }
+        .badge-insulin { background-color: #e0d8f0; color: #3d2a70; }
 
         .recipe-meta { font-size: 0.875rem; color: #a07050; margin-bottom: 1.25rem; }
 
@@ -1081,6 +1082,137 @@
                 </div>
             </div>
 
+            <div class="recipe-card"
+                 data-symptoms="nausea,mouth-sores,no-appetite"
+                 data-texture="liquid"
+                 data-calories="380"
+                 data-protein="24">
+                <div class="card-header">
+                    <h3>Greek Yogurt Protein Smoothie (Low Sugar)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-nausea">Nausea</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-liquid">Liquid</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 1 &nbsp;|&nbsp; Ready in 5 minutes &nbsp;|&nbsp; Blender</p>
+                <div class="recipe-note">
+                    Designed for insulin resistance — minimal natural sugar, high protein, and plenty of soluble fiber from chia. The cinnamon helps stabilize blood sugar, and almond butter slows glucose absorption.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>1 cup plain whole milk Greek yogurt</li>
+                            <li>&frac12; cup unsweetened almond milk</li>
+                            <li>&frac13; cup frozen blueberries</li>
+                            <li>1 tbsp chia seeds</li>
+                            <li>1 tbsp almond butter</li>
+                            <li>&frac12; tsp cinnamon</li>
+                            <li>&frac12; tsp vanilla extract</li>
+                            <li>4 ice cubes</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Add all ingredients to a blender.</li>
+                            <li>Blend on high for 45 seconds until smooth.</li>
+                            <li>Let sit 2 minutes to let chia seeds thicken slightly.</li>
+                            <li>Pour and sip slowly.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~380 calories</span>
+                    <span>24g protein</span>
+                    <span>18g fat</span>
+                    <span>22g carbs</span>
+                    <span>Low glycemic</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Sugar)</h4>
+                    <ul>
+                        <li>Increase almond butter to 2 tbsp — adds ~95 cal, no sugar</li>
+                        <li>Add 1 tbsp coconut oil — adds ~120 cal of pure fat</li>
+                        <li>Add &frac12; ripe avocado — adds ~160 cal and healthy fat</li>
+                        <li>Use full-fat coconut cream instead of almond milk — adds ~100 cal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="mouth-sores,no-appetite"
+                 data-texture="liquid"
+                 data-calories="320"
+                 data-protein="28">
+                <div class="card-header">
+                    <h3>Avocado Cocoa Protein Shake (Low Sugar)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-liquid">Liquid</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 1 &nbsp;|&nbsp; Ready in 5 minutes &nbsp;|&nbsp; Blender</p>
+                <div class="recipe-note">
+                    Tastes like a chocolate shake but contains almost no sugar. Avocado adds healthy fat and creaminess, cocoa provides flavor without carbs, and protein powder keeps blood sugar stable.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>&frac12; ripe avocado</li>
+                            <li>1 cup unsweetened almond milk</li>
+                            <li>1 scoop unflavored or vanilla protein powder</li>
+                            <li>1 tbsp unsweetened cocoa powder</li>
+                            <li>&frac12; tsp cinnamon</li>
+                            <li>1 tsp vanilla extract</li>
+                            <li>4–5 ice cubes</li>
+                            <li>Optional: a few drops of stevia or monk fruit for sweetness</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Scoop avocado into blender. Add remaining ingredients.</li>
+                            <li>Blend on high for 45 seconds until silky smooth.</li>
+                            <li>Taste and adjust sweetness if needed.</li>
+                            <li>Serve immediately.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~320 calories</span>
+                    <span>28g protein</span>
+                    <span>18g fat</span>
+                    <span>12g carbs</span>
+                    <span>Very low sugar</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Sugar)</h4>
+                    <ul>
+                        <li>Use the full avocado — adds ~160 cal of healthy fat</li>
+                        <li>Add 1 tbsp almond or peanut butter — adds ~95 cal</li>
+                        <li>Add 1 tbsp coconut oil or MCT oil — adds ~120 cal</li>
+                        <li>Use unsweetened coconut milk instead of almond milk — adds ~45 cal</li>
+                    </ul>
+                </div>
+            </div>
+
             </div><!-- end section-body smoothies -->
         </section>
 
@@ -1597,6 +1729,72 @@
                 </div>
             </div>
 
+            <div class="recipe-card"
+                 data-symptoms="nausea,mouth-sores,no-appetite"
+                 data-texture="soft"
+                 data-calories="280"
+                 data-protein="6">
+                <div class="card-header">
+                    <h3>Creamy Cauliflower Soup (Low Carb)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-nausea">Nausea</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 4 &nbsp;|&nbsp; Ready in 30 minutes &nbsp;|&nbsp; Stovetop + Blender</p>
+                <div class="recipe-note">
+                    All the comfort of a creamy potato-leek soup with a fraction of the carbs. Cauliflower purees to a silky texture that's indistinguishable from potato when blended. Rich in healthy fat from butter and cream, which keeps blood sugar stable.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>1 large head cauliflower, chopped</li>
+                            <li>3 cups low-sodium chicken or vegetable broth</li>
+                            <li>3 tbsp unsalted butter</li>
+                            <li>&frac12; cup heavy cream</li>
+                            <li>&frac14; cup grated Parmesan (optional)</li>
+                            <li>&frac12; tsp salt</li>
+                            <li>Pinch of white pepper (optional)</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Melt butter in a pot over medium-low heat.</li>
+                            <li>Add cauliflower and cook 5 minutes, stirring occasionally.</li>
+                            <li>Add broth and simmer 20 minutes until cauliflower is very tender.</li>
+                            <li>Blend completely smooth.</li>
+                            <li>Stir in cream and Parmesan if using. Season and serve warm.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~280 calories</span>
+                    <span>6g protein</span>
+                    <span>24g fat</span>
+                    <span>10g carbs</span>
+                    <span>Low glycemic</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Carb)</h4>
+                    <ul>
+                        <li>Stir in 1 tbsp butter per bowl — adds ~100 cal</li>
+                        <li>Use extra heavy cream — adds rich fat without carbs</li>
+                        <li>Blend in 2 tbsp cream cheese — adds ~100 cal</li>
+                        <li>Top with shredded cheese — adds fat and flavor</li>
+                    </ul>
+                </div>
+            </div>
+
             </div><!-- end section-body soups -->
         </section>
 
@@ -1912,6 +2110,70 @@
                 </div>
             </div>
 
+            <div class="recipe-card"
+                 data-symptoms="mouth-sores,no-appetite"
+                 data-texture="soft"
+                 data-calories="310"
+                 data-protein="7">
+                <div class="card-header">
+                    <h3>Creamy Cauliflower Mash (Low Carb)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 4 &nbsp;|&nbsp; Ready in 20 minutes &nbsp;|&nbsp; Stovetop + Blender</p>
+                <div class="recipe-note">
+                    A low-carb swap for mashed potatoes — just as creamy and comforting, with a fraction of the starch. The butter and cream cheese add richness that keeps you satisfied and helps stabilize blood sugar.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>1 large head cauliflower, cut into florets</li>
+                            <li>4 tbsp unsalted butter</li>
+                            <li>&frac14; cup cream cheese, softened</li>
+                            <li>2 tbsp heavy cream</li>
+                            <li>&frac12; tsp salt</li>
+                            <li>Pinch of white pepper (optional)</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Steam or boil cauliflower until completely tender, about 12 minutes.</li>
+                            <li>Drain very well — squeeze out extra water with a clean towel if needed.</li>
+                            <li>Add to a blender or food processor with butter, cream cheese, and cream.</li>
+                            <li>Blend until silky smooth and no lumps remain.</li>
+                            <li>Season with salt. Serve warm.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~310 calories</span>
+                    <span>7g protein</span>
+                    <span>28g fat</span>
+                    <span>10g carbs</span>
+                    <span>Very low sugar</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Carb)</h4>
+                    <ul>
+                        <li>Increase butter to 6 tbsp — adds ~200 cal</li>
+                        <li>Use extra cream cheese — adds ~100 cal per 2 tbsp</li>
+                        <li>Stir in &frac14; cup shredded Parmesan or cheddar — adds ~110 cal</li>
+                        <li>Drizzle with 1 tbsp olive oil — adds ~120 cal</li>
+                    </ul>
+                </div>
+            </div>
+
             </div><!-- end section-body soft-foods -->
         </section>
 
@@ -2215,6 +2477,69 @@
                         <li>Add extra honey — adds ~60 cal per tbsp</li>
                         <li>Blend in 1 tbsp almond butter — adds ~95 cal and healthy fat</li>
                         <li>Top with soft banana slices instead of peaches — adds ~90 cal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="mouth-sores,no-appetite"
+                 data-texture="soft"
+                 data-calories="240"
+                 data-protein="7">
+                <div class="card-header">
+                    <h3>Cinnamon Vanilla Chia Pudding (Low Sugar)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 5 min + chill &nbsp;|&nbsp; No cooking</p>
+                <div class="recipe-note">
+                    Chia seeds are one of the best foods for blood sugar stability — packed with soluble fiber and healthy fat that slow glucose absorption. Almost no added sugar, just cinnamon and vanilla for flavor.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>&frac14; cup chia seeds</li>
+                            <li>1 cup unsweetened almond milk or coconut milk</li>
+                            <li>&frac12; tsp cinnamon</li>
+                            <li>1 tsp vanilla extract</li>
+                            <li>Optional: a few drops of stevia or monk fruit</li>
+                            <li>Optional: 2 tbsp plain Greek yogurt stirred in</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Whisk chia seeds, milk, cinnamon, and vanilla together in a bowl.</li>
+                            <li>Wait 5 minutes, then whisk again to break up clumps.</li>
+                            <li>Cover and refrigerate at least 2 hours or overnight.</li>
+                            <li>Stir and serve chilled. Add sweetener or yogurt if desired.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~240 calories</span>
+                    <span>7g protein</span>
+                    <span>14g fat</span>
+                    <span>20g carbs (14g fiber)</span>
+                    <span>Net carbs: 6g</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Sugar)</h4>
+                    <ul>
+                        <li>Stir in 1 tbsp almond butter per serving — adds ~95 cal</li>
+                        <li>Use full-fat coconut milk instead — adds ~80 cal</li>
+                        <li>Top with 2 tbsp chopped pecans — adds ~100 cal</li>
+                        <li>Add 1 tbsp coconut oil or MCT oil — adds ~120 cal</li>
                     </ul>
                 </div>
             </div>
@@ -2613,6 +2938,70 @@
                 </div>
             </div>
 
+            <div class="recipe-card"
+                 data-symptoms="mouth-sores,no-appetite"
+                 data-texture="soft"
+                 data-calories="360"
+                 data-protein="14">
+                <div class="card-header">
+                    <h3>Savory Tofu Avocado Mash (Low Sugar)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 5 minutes &nbsp;|&nbsp; No cooking</p>
+                <div class="recipe-note">
+                    High protein, high healthy fat, and virtually no sugar — the perfect insulin-friendly soft food. Eat with a spoon, spread on soft bread, or thin with broth to make a quick cold soup.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>1 block silken tofu (12 oz), drained</li>
+                            <li>1 ripe avocado</li>
+                            <li>2 tbsp olive oil</li>
+                            <li>1 tsp lemon juice (or skip if mouth sores are active)</li>
+                            <li>&frac12; tsp salt</li>
+                            <li>Optional: 1 tsp nutritional yeast for savory depth</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Drain tofu gently. Scoop avocado flesh into a bowl.</li>
+                            <li>Add all ingredients to a blender or food processor.</li>
+                            <li>Blend until completely smooth and creamy.</li>
+                            <li>Taste and adjust salt.</li>
+                            <li>Serve chilled or at room temperature.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~360 calories</span>
+                    <span>14g protein</span>
+                    <span>28g fat</span>
+                    <span>12g carbs</span>
+                    <span>Very low sugar</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Sugar)</h4>
+                    <ul>
+                        <li>Increase olive oil to 3 tbsp — adds ~120 cal</li>
+                        <li>Add 2 tbsp tahini — adds ~180 cal and extra protein</li>
+                        <li>Use the full avocado — adds ~160 cal</li>
+                        <li>Top with toasted nuts or seeds — adds fat and flavor</li>
+                    </ul>
+                </div>
+            </div>
+
             </div><!-- end section-body plant-proteins -->
         </section>
 
@@ -2941,6 +3330,72 @@
                         <li>Use full-fat coconut milk instead of regular milk — adds ~100 cal</li>
                         <li>Add an extra tbsp of butter — adds ~100 cal</li>
                         <li>Top with soft stewed pears or banana — adds ~90–200 cal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="nausea,no-appetite"
+                 data-texture="soft"
+                 data-calories="340"
+                 data-protein="10">
+                <div class="card-header">
+                    <h3>Steel-Cut Oats with Chia &amp; Cinnamon (Low Glycemic)</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-insulin">Insulin-Friendly</span>
+                        <span class="badge badge-nausea">Nausea</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 1 &nbsp;|&nbsp; Ready in 20 minutes &nbsp;|&nbsp; Stovetop</p>
+                <div class="recipe-note">
+                    Steel-cut oats digest much more slowly than rolled oats — they keep blood sugar steady for hours. Paired with chia (soluble fiber), almond butter (fat), and cinnamon (blood sugar support), this is one of the most insulin-stable breakfasts possible.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>&frac12; cup steel-cut oats</li>
+                            <li>1&frac12; cups unsweetened almond milk (plus more as needed)</li>
+                            <li>1 tbsp chia seeds</li>
+                            <li>1 tbsp almond butter</li>
+                            <li>&frac12; tsp cinnamon</li>
+                            <li>&frac14; tsp vanilla extract</li>
+                            <li>Pinch of salt</li>
+                            <li>Optional: a few drops of stevia</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Bring almond milk to a gentle simmer in a small pot.</li>
+                            <li>Stir in oats, cinnamon, and salt.</li>
+                            <li>Cook on low for 15–18 minutes, stirring often, until oats are tender.</li>
+                            <li>Stir in chia seeds, almond butter, and vanilla.</li>
+                            <li>Let sit 2 minutes to let chia thicken. Thin with more milk if needed.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~340 calories</span>
+                    <span>10g protein</span>
+                    <span>16g fat</span>
+                    <span>38g carbs (10g fiber)</span>
+                    <span>Low glycemic</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Low Sugar)</h4>
+                    <ul>
+                        <li>Double the almond butter — adds ~95 cal of fat and protein</li>
+                        <li>Stir in 1 tbsp coconut oil — adds ~120 cal</li>
+                        <li>Top with 2 tbsp chopped walnuts or pecans — adds ~100 cal</li>
+                        <li>Use full-fat coconut milk instead of almond milk — adds ~100 cal</li>
                     </ul>
                 </div>
             </div>
@@ -3477,6 +3932,51 @@
                 'Butter → coconut oil for dairy-free',
                 'Honey → maple syrup',
                 'Top with stewed pears or banana instead of leaving plain',
+            ],
+            'Greek Yogurt Protein Smoothie (Low Sugar)': [
+                'Greek yogurt → unsweetened coconut yogurt for dairy-free',
+                'Almond milk → oat milk (slightly higher carbs but still gentle)',
+                'Blueberries → raspberries (even lower sugar)',
+                'Almond butter → peanut or sunflower seed butter',
+                'Skip fruit entirely for the lowest possible carbs',
+            ],
+            'Avocado Cocoa Protein Shake (Low Sugar)': [
+                'Almond milk → unsweetened coconut or cashew milk',
+                'Whey protein → plant protein (pea or hemp) for dairy-free',
+                'Cocoa powder → cacao powder for higher antioxidants',
+                'Stevia → monk fruit or skip for fully unsweetened',
+            ],
+            'Creamy Cauliflower Soup (Low Carb)': [
+                'Cauliflower → broccoli or a mix of both',
+                'Heavy cream → coconut cream for dairy-free',
+                'Butter → olive oil or dairy-free butter',
+                'Parmesan → nutritional yeast for dairy-free',
+                'Chicken broth → vegetable broth',
+            ],
+            'Creamy Cauliflower Mash (Low Carb)': [
+                'Cauliflower → celeriac (celery root) or turnips for variety',
+                'Cream cheese → Greek yogurt for a lighter version',
+                'Butter → olive oil for dairy-free',
+                'Heavy cream → coconut cream',
+            ],
+            'Cinnamon Vanilla Chia Pudding (Low Sugar)': [
+                'Almond milk → unsweetened coconut, cashew, or hemp milk',
+                'Chia seeds → ground flax + whole chia (1:1) for thicker pudding',
+                'Stevia → monk fruit or a small drizzle of honey (adds some sugar)',
+                'Greek yogurt → coconut yogurt for dairy-free',
+            ],
+            'Savory Tofu Avocado Mash (Low Sugar)': [
+                'Silken tofu → soft tofu blended extra long',
+                'Olive oil → avocado oil for a more neutral flavor',
+                'Lemon juice → skip entirely if mouth sores are active',
+                'Nutritional yeast → a small amount of Parmesan for dairy version',
+            ],
+            'Steel-Cut Oats with Chia & Cinnamon (Low Glycemic)': [
+                'Steel-cut oats → old-fashioned rolled oats (faster cook, slightly higher GI)',
+                'Almond milk → unsweetened coconut or cashew milk',
+                'Almond butter → peanut, cashew, or sunflower seed butter',
+                'Chia seeds → ground flax for similar soluble fiber',
+                'Stevia → monk fruit, or skip sweetener entirely',
             ],
             'No-Bake Peanut Butter Oat Bites': [
                 'Peanut butter → almond butter or sunflower seed butter if nut allergy',
