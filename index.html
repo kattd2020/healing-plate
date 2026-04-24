@@ -5075,6 +5075,25 @@
         });
 
         function applyFilters() {
+            const anyFilterActive = activeSymptom !== 'all'
+                                 || activeTexture !== 'all'
+                                 || activeIngredient !== 'all'
+                                 || searchQuery !== '';
+
+            // When any filter is on, reveal ALL sections so matches across
+            // categories can show. When all filters are cleared, restore the
+            // user's selected section (or welcome state).
+            if (anyFilterActive) {
+                document.querySelectorAll('main > section').forEach(s => s.classList.add('active'));
+                document.getElementById('welcome-msg').style.display = 'none';
+                document.querySelectorAll('nav a[data-section]').forEach(a => a.classList.remove('active'));
+            } else {
+                const anySectionActive = document.querySelector('main > section.active');
+                if (!anySectionActive) {
+                    document.getElementById('welcome-msg').style.display = '';
+                }
+            }
+
             document.querySelectorAll('.recipe-card').forEach(card => {
                 const symptoms    = (card.dataset.symptoms   || '').split(',');
                 const ingredients = (card.dataset.ingredient || '').split(',');
