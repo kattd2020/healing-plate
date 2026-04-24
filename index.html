@@ -307,6 +307,7 @@
             <li><a href="#plant-proteins">Plant Based Proteins</a></li>
             <li><a href="#healthy-carbs">Healthy Carbs</a></li>
             <li><a href="#insulin-friendly">Insulin-Friendly</a></li>
+            <li><a href="#dinner">Dinner</a></li>
             <li><a href="#calendar">Calendar</a></li>
         </ul>
     </nav>
@@ -3422,6 +3423,345 @@
             </div><!-- end section-body insulin-friendly -->
         </section>
 
+        <!-- DINNER -->
+        <section id="dinner" style="margin-top:1.5rem;">
+            <button class="section-tab" onclick="toggleSection('dinner')">
+                <span>Dinner</span>
+                <span class="tab-arrow">+</span>
+            </button>
+            <div class="section-body" id="body-dinner">
+
+            <div class="recipe-card"
+                 data-symptoms="no-appetite"
+                 data-texture="soft"
+                 data-calories="520"
+                 data-protein="38">
+                <div class="card-header">
+                    <h3>Baked Lemon-Herb Chicken &amp; Sweet Potato</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 40 minutes &nbsp;|&nbsp; Oven</p>
+                <div class="recipe-note">
+                    Dairy-free and oil-light. Baking the chicken on a bed of broth keeps it moist without needing butter or lots of oil. Sweet potato is gentle on the gut, easy to digest, and naturally sweet — comforting when appetite is low. Skip the lemon if mouth sores are present.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>2 boneless skinless chicken thighs (about 8 oz)</li>
+                            <li>1 medium sweet potato, peeled and cubed</li>
+                            <li>&frac12; cup low-sodium chicken broth</li>
+                            <li>1 tsp olive oil (optional, can omit)</li>
+                            <li>1 tsp fresh thyme or &frac12; tsp dried</li>
+                            <li>1 tsp fresh rosemary, finely chopped (or &frac12; tsp dried)</li>
+                            <li>&frac12; tsp salt</li>
+                            <li>1 tsp lemon zest (skip if mouth sores)</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Preheat oven to 375&deg;F.</li>
+                            <li>Place sweet potato cubes in a baking dish. Pour broth over them.</li>
+                            <li>Season chicken with herbs, salt, and lemon zest. Place on top of potatoes.</li>
+                            <li>Drizzle with olive oil if using. Cover with foil.</li>
+                            <li>Bake 30 minutes covered, then uncover for 5–10 minutes until chicken reaches 165&deg;F.</li>
+                            <li>Serve with the juices spooned over the top.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~520 calories</span>
+                    <span>38g protein</span>
+                    <span>16g fat</span>
+                    <span>48g carbs</span>
+                    <span>Dairy-free</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Dairy-Free)</h4>
+                    <ul>
+                        <li>Drizzle with 1 tbsp olive oil before serving — adds ~120 cal</li>
+                        <li>Serve with &frac12; mashed avocado on the side — adds ~160 cal of healthy fat</li>
+                        <li>Add &frac14; cup cooked rice or quinoa to the plate — adds ~55 cal</li>
+                        <li>Top with 2 tbsp toasted pumpkin seeds — adds ~90 cal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="nausea,no-appetite"
+                 data-texture="soft"
+                 data-calories="450"
+                 data-protein="32">
+                <div class="card-header">
+                    <h3>Ginger Turkey &amp; Rice Bowl</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-nausea">Nausea</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 25 minutes &nbsp;|&nbsp; Stovetop</p>
+                <div class="recipe-note">
+                    Ground turkey simmered in ginger broth — the ginger helps calm nausea, and the lean protein is easy to digest. Cooked without butter or heavy oils, using broth as the cooking liquid instead. Serve over soft white rice for a gentle, complete meal.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>8 oz ground turkey (93% lean)</li>
+                            <li>1 cup low-sodium chicken broth</li>
+                            <li>1 tbsp fresh ginger, finely grated</li>
+                            <li>1 tsp olive oil (optional)</li>
+                            <li>1 small carrot, finely diced</li>
+                            <li>1 tsp low-sodium soy sauce or coconut aminos</li>
+                            <li>&frac14; tsp salt</li>
+                            <li>1 cup cooked white or jasmine rice</li>
+                            <li>Optional: 1 finely chopped scallion for garnish</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>In a saucepan, heat olive oil (or just &frac14; cup of the broth) over medium heat.</li>
+                            <li>Add ginger and carrot. Cook 2 minutes until fragrant.</li>
+                            <li>Add turkey and break apart. Cook until no longer pink, about 5 minutes.</li>
+                            <li>Pour in remaining broth and soy sauce. Simmer 10 minutes until most liquid is absorbed.</li>
+                            <li>Season with salt. Serve over warm rice.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~450 calories</span>
+                    <span>32g protein</span>
+                    <span>14g fat</span>
+                    <span>44g carbs</span>
+                    <span>Dairy-free</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Dairy-Free)</h4>
+                    <ul>
+                        <li>Stir in &frac12; mashed avocado at the end — adds ~160 cal</li>
+                        <li>Top with 1 tbsp toasted sesame seeds — adds ~50 cal</li>
+                        <li>Use 1 tbsp coconut oil for cooking instead of broth — adds ~120 cal</li>
+                        <li>Add &frac12; cup extra rice — adds ~100 cal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="mouth-sores,no-appetite"
+                 data-texture="soft"
+                 data-calories="420"
+                 data-protein="30">
+                <div class="card-header">
+                    <h3>Broth-Poached White Fish with Herbed Quinoa</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 25 minutes &nbsp;|&nbsp; Stovetop</p>
+                <div class="recipe-note">
+                    Poaching in broth (instead of frying) means no oils, no splatter, and a gentle flaky texture that's ideal for mouth sores. White fish is one of the easiest proteins to digest. Quinoa adds complete protein without dairy.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>2 (5 oz) cod, tilapia, or sole fillets</li>
+                            <li>2 cups low-sodium vegetable or fish broth</li>
+                            <li>1 bay leaf</li>
+                            <li>2 sprigs fresh parsley</li>
+                            <li>&frac12; cup uncooked quinoa, rinsed</li>
+                            <li>1 cup water (for quinoa)</li>
+                            <li>1 tbsp finely chopped fresh parsley or dill</li>
+                            <li>&frac14; tsp salt</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Cook quinoa in water per package directions (about 15 min). Fluff with a fork and stir in fresh herbs and salt.</li>
+                            <li>Meanwhile, bring broth to a low simmer in a wide pan with bay leaf and parsley sprigs.</li>
+                            <li>Gently lower fish fillets into broth. Cover and poach 7–9 minutes until fish flakes easily.</li>
+                            <li>Lift fish out carefully with a slotted spatula.</li>
+                            <li>Serve over quinoa. Spoon a little warm broth on top.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~420 calories</span>
+                    <span>30g protein</span>
+                    <span>8g fat</span>
+                    <span>42g carbs</span>
+                    <span>Dairy-free &amp; oil-free</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Dairy-Free)</h4>
+                    <ul>
+                        <li>Stir &frac12; mashed avocado into the quinoa — adds ~160 cal</li>
+                        <li>Drizzle 1 tbsp olive oil on the finished dish — adds ~120 cal</li>
+                        <li>Top fish with 2 tbsp toasted pine nuts or slivered almonds — adds ~90 cal</li>
+                        <li>Add &frac14; cup cooked lentils to the quinoa — adds ~60 cal + protein</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="nausea,mouth-sores,no-appetite"
+                 data-texture="soft"
+                 data-calories="480"
+                 data-protein="34">
+                <div class="card-header">
+                    <h3>Shredded Chicken &amp; Rice in Ginger Broth</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-nausea">Nausea</span>
+                        <span class="badge badge-mouth-sores">Mouth Sores</span>
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 30 minutes &nbsp;|&nbsp; Stovetop</p>
+                <div class="recipe-note">
+                    A brothy, congee-style dinner that's as gentle as it gets — soft rice, shredded chicken, and ginger broth that calms the stomach. Completely dairy-free and made without added oils. Great when you need a meal that feels like a hug.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>1 boneless skinless chicken breast (about 8 oz)</li>
+                            <li>4 cups low-sodium chicken broth</li>
+                            <li>1-inch piece fresh ginger, sliced</li>
+                            <li>&frac12; cup uncooked jasmine or white rice</li>
+                            <li>1 small carrot, finely diced</li>
+                            <li>&frac14; tsp salt (or to taste)</li>
+                            <li>Optional: 1 soft-cooked egg, sliced thin</li>
+                            <li>Optional: 1 tsp chopped scallion for garnish</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Place chicken, broth, ginger, and carrot in a pot. Bring to a gentle simmer.</li>
+                            <li>Cook 15 minutes until chicken is fully cooked through.</li>
+                            <li>Remove chicken, let rest 5 minutes, then shred with two forks.</li>
+                            <li>Add rice to the simmering broth. Cook 15 minutes until rice is very soft and the broth has thickened slightly.</li>
+                            <li>Remove ginger slices. Return shredded chicken to the pot. Season with salt.</li>
+                            <li>Ladle into bowls. Top with soft egg or scallions if using.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~480 calories</span>
+                    <span>34g protein</span>
+                    <span>6g fat</span>
+                    <span>60g carbs</span>
+                    <span>Dairy-free &amp; oil-free</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Dairy-Free)</h4>
+                    <ul>
+                        <li>Add a soft-cooked egg to each bowl — adds ~70 cal and 6g protein</li>
+                        <li>Stir in &frac12; mashed avocado — adds ~160 cal of healthy fat</li>
+                        <li>Drizzle 1 tsp sesame oil on top — adds ~40 cal and rich flavor</li>
+                        <li>Add an extra &frac14; cup rice — adds ~50 cal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="recipe-card"
+                 data-symptoms="no-appetite"
+                 data-texture="soft"
+                 data-calories="540"
+                 data-protein="36">
+                <div class="card-header">
+                    <h3>Baked Salmon with Mashed Sweet Potato</h3>
+                    <div class="card-badges">
+                        <span class="badge badge-no-appetite">No Appetite</span>
+                        <span class="badge badge-soft">Soft</span>
+                    </div>
+                </div>
+                <p class="recipe-meta">Serves 2 &nbsp;|&nbsp; Ready in 30 minutes &nbsp;|&nbsp; Oven</p>
+                <div class="recipe-note">
+                    Salmon is rich in omega-3s, which support healing during chemo. The sweet potato mash uses broth and olive oil — no butter, no milk, no cream. A complete, nourishing dairy-free dinner.
+                </div>
+                <div class="recipe-columns">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul>
+                            <li>2 (5 oz) salmon fillets, skin on</li>
+                            <li>1 tsp olive oil</li>
+                            <li>&frac14; tsp salt</li>
+                            <li>&frac12; tsp fresh or dried dill</li>
+                            <li>2 medium sweet potatoes, peeled and cubed</li>
+                            <li>&frac14; cup low-sodium vegetable broth</li>
+                            <li>1 tbsp olive oil (for the mash)</li>
+                            <li>Pinch of salt and cinnamon (optional)</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <ol>
+                            <li>Preheat oven to 400&deg;F. Line a baking sheet with parchment.</li>
+                            <li>Boil sweet potato cubes for 12 minutes or until fork-tender.</li>
+                            <li>While potatoes cook, rub salmon with olive oil, salt, and dill. Place skin-down on the baking sheet.</li>
+                            <li>Bake salmon 12–15 minutes until it flakes easily.</li>
+                            <li>Drain potatoes, return to pot. Add broth, olive oil, salt, and cinnamon. Mash until smooth and creamy.</li>
+                            <li>Serve salmon over or alongside the mashed sweet potato.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="nutrition">
+                    <span>~540 calories</span>
+                    <span>36g protein</span>
+                    <span>22g fat</span>
+                    <span>44g carbs</span>
+                    <span>Dairy-free</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-add-log" onclick="addToLog(this)">+ Add to Today's Log</button>
+                    <button class="btn-boost" onclick="toggleBoost(this)">&#8679; Boost Calories</button>
+                    <button class="btn-print" onclick="printCard(this)">&#9113; Print Card</button>
+                </div>
+                <div class="boost-tips">
+                    <h4>Make It Higher Calorie (Still Dairy-Free)</h4>
+                    <ul>
+                        <li>Increase olive oil in the mash to 2 tbsp — adds ~120 cal</li>
+                        <li>Top salmon with 2 tbsp chopped walnuts — adds ~100 cal of healthy fat</li>
+                        <li>Serve with &frac12; mashed avocado on the side — adds ~160 cal</li>
+                        <li>Stir 2 tbsp coconut cream into the mash — adds ~70 cal, rich and dairy-free</li>
+                    </ul>
+                </div>
+            </div>
+
+            </div><!-- end section-body dinner -->
+        </section>
+
         <!-- CALENDAR -->
         <section id="calendar" style="margin-top:1.5rem;">
             <button class="section-tab" onclick="toggleSection('calendar')">
@@ -4102,6 +4442,36 @@
                 'Canned peaches → any soft canned fruit in juice drained',
                 'Honey → maple syrup',
                 'Fresh banana slices work well in place of canned fruit',
+            ],
+            'Baked Lemon-Herb Chicken & Sweet Potato': [
+                'Chicken thighs → chicken breast (lower fat) or boneless turkey',
+                'Sweet potato → regular potato, butternut squash, or carrots',
+                'Olive oil → avocado oil, or skip entirely and use extra broth',
+                'Fresh herbs → any dried herb blend; skip lemon if mouth sores are active',
+            ],
+            'Ginger Turkey & Rice Bowl': [
+                'Ground turkey → ground chicken, lean beef, or crumbled firm tofu',
+                'White rice → jasmine, basmati, or soft-cooked quinoa',
+                'Soy sauce → coconut aminos for soy-free/lower sodium',
+                'Fresh ginger → &frac12; tsp ground ginger (skip if ginger upsets stomach)',
+            ],
+            'Broth-Poached White Fish with Herbed Quinoa': [
+                'White fish → salmon, trout, or poached chicken breast',
+                'Quinoa → soft white rice, couscous, or mashed potatoes',
+                'Fish broth → vegetable or low-sodium chicken broth',
+                'Fresh herbs → any soft herb you tolerate; skip entirely if mouth sores',
+            ],
+            'Shredded Chicken & Rice in Ginger Broth': [
+                'Chicken breast → chicken thigh, poached turkey, or soft tofu',
+                'Jasmine rice → any short-grain or soft rice; orzo also works',
+                'Fresh ginger → skip or use a very small pinch of ground ginger',
+                'Broth → bone broth for more protein, or vegetable broth for plant-based',
+            ],
+            'Baked Salmon with Mashed Sweet Potato': [
+                'Salmon → cod, trout, or baked chicken breast',
+                'Sweet potato → Yukon gold potato, butternut squash, or parsnip',
+                'Olive oil → avocado oil or 2 tbsp coconut cream for the mash',
+                'Dill → parsley, thyme, or any herb you enjoy',
             ],
         };
 
