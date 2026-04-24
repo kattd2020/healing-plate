@@ -94,7 +94,22 @@
         /* Main */
         main { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 3rem; text-align: left; }
 
-        .section-title { font-size: 1.75rem; color: #8b5e3c; border-bottom: 2px solid #c28b5e; padding-bottom: 0.5rem; margin-bottom: 1.75rem; }
+        .section-tab {
+            width: 100%; display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 1.5rem; background-color: #c28b5e; color: #fdf6ee;
+            border: none; border-radius: 8px; font-family: Georgia, serif; font-size: 1.3rem;
+            cursor: pointer; text-align: left; transition: background-color 0.2s; margin-bottom: 0;
+        }
+        .section-tab:hover { background-color: #8b5e3c; }
+        .section-tab.open { border-radius: 8px 8px 0 0; }
+        .tab-arrow { font-size: 1.4rem; transition: transform 0.2s; flex-shrink: 0; }
+        .section-body {
+            display: none; padding: 1.75rem 1.5rem;
+            border: 1px solid #e0c4a8; border-top: none;
+            border-radius: 0 0 8px 8px; background-color: #fdf6ee;
+        }
+        .section-body.open { display: block; }
+        .recipe-card + .recipe-card { margin-top: 2rem; }
 
         /* Recipe card */
         .recipe-card {
@@ -256,7 +271,11 @@
 
     <main>
         <section id="smoothies">
-            <h2 class="section-title">Smoothies &amp; Shakes</h2>
+            <button class="section-tab" onclick="toggleSection('smoothies')">
+                <span>Smoothies &amp; Shakes</span>
+                <span class="tab-arrow">+</span>
+            </button>
+            <div class="section-body" id="body-smoothies">
 
             <div class="recipe-card"
                  data-symptoms="nausea,mouth-sores,no-appetite"
@@ -336,7 +355,7 @@
                  data-texture="liquid"
                  data-calories="320"
                  data-protein="8"
-                 style="margin-top:2rem;">
+                >
 
                 <div class="card-header">
                     <h3>Banana Ginger Smoothie</h3>
@@ -408,7 +427,7 @@
                  data-texture="liquid"
                  data-calories="720"
                  data-protein="18"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Chocolate Peanut Butter Shake</h3>
                     <div class="card-badges">
@@ -470,7 +489,7 @@
                  data-texture="liquid"
                  data-calories="360"
                  data-protein="9"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Mango Peach Creamsicle Smoothie</h3>
                     <div class="card-badges">
@@ -533,7 +552,7 @@
                  data-texture="liquid"
                  data-calories="440"
                  data-protein="10"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Strawberry Vanilla Cream Smoothie</h3>
                     <div class="card-badges">
@@ -597,7 +616,7 @@
                  data-texture="liquid"
                  data-calories="580"
                  data-protein="10"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Avocado Honey Smoothie</h3>
                     <div class="card-badges">
@@ -660,7 +679,7 @@
                  data-texture="liquid"
                  data-calories="450"
                  data-protein="14"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Blueberry Oat Smoothie</h3>
                     <div class="card-badges">
@@ -718,11 +737,15 @@
                 </div>
             </div>
 
+            </div><!-- end section-body smoothies -->
         </section>
 
-        <!-- SOUPS -->
-        <section id="soups" style="margin-top:3rem;">
-            <h2 class="section-title">Soups</h2>
+        <section id="soups" style="margin-top:1.5rem;">
+            <button class="section-tab" onclick="toggleSection('soups')">
+                <span>Soups</span>
+                <span class="tab-arrow">+</span>
+            </button>
+            <div class="section-body" id="body-soups">
 
             <div class="recipe-card"
                  data-symptoms="nausea,mouth-sores,no-appetite"
@@ -793,7 +816,7 @@
                  data-texture="liquid"
                  data-calories="300"
                  data-protein="5"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Pureed Butternut Squash Soup</h3>
                     <div class="card-badges">
@@ -856,7 +879,7 @@
                  data-texture="soft"
                  data-calories="420"
                  data-protein="28"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Creamy Chicken Noodle Soup</h3>
                     <div class="card-badges">
@@ -920,7 +943,7 @@
                  data-texture="soft"
                  data-calories="380"
                  data-protein="9"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Sweet Corn Chowder</h3>
                     <div class="card-badges">
@@ -983,7 +1006,7 @@
                  data-texture="soft"
                  data-calories="440"
                  data-protein="16"
-                 style="margin-top:2rem;">
+                >
                 <div class="card-header">
                     <h3>Broccoli Cheddar Soup</h3>
                     <div class="card-badges">
@@ -1041,6 +1064,7 @@
                 </div>
             </div>
 
+            </div><!-- end section-body soups -->
         </section>
     </main>
 
@@ -1130,6 +1154,15 @@
             document.getElementById('toggle-tracker').textContent =
                 panel.classList.contains('open') ? '▼ Daily Goal Tracker' : '▶ Daily Goal Tracker';
         });
+
+        // --- Section accordion ---
+        function toggleSection(id) {
+            const body = document.getElementById('body-' + id);
+            const tab = body.previousElementSibling;
+            const isOpen = body.classList.toggle('open');
+            tab.classList.toggle('open', isOpen);
+            tab.querySelector('.tab-arrow').textContent = isOpen ? '−' : '+';
+        }
 
         // --- Boost tips toggle ---
         function toggleBoost(btn) {
