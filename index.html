@@ -111,6 +111,67 @@
         .section-body.open { display: block; }
         .recipe-card + .recipe-card { margin-top: 2rem; }
 
+        /* Calendar */
+        .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .cal-nav-btn {
+            background: none; border: 1px solid #c28b5e; border-radius: 6px;
+            color: #8b5e3c; font-size: 1.2rem; padding: 0.3rem 0.9rem; cursor: pointer; transition: background-color 0.2s;
+        }
+        .cal-nav-btn:hover { background-color: #f5e6d3; }
+        .cal-month-title { font-size: 1.2rem; color: #8b5e3c; font-family: Georgia, serif; }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+        .cal-day-header { text-align: center; font-size: 0.75rem; color: #a07050; padding: 0.4rem 0; text-transform: uppercase; letter-spacing: 0.05em; }
+        .cal-day {
+            min-height: 75px; background-color: #fff8f0; border: 1px solid #e0c4a8;
+            border-radius: 5px; padding: 0.35rem; cursor: pointer; transition: background-color 0.15s; overflow: hidden;
+        }
+        .cal-day:hover { background-color: #fdebd0; }
+        .cal-day.cal-empty { background: transparent; border-color: transparent; cursor: default; pointer-events: none; }
+        .cal-day.today { border-color: #c28b5e; background-color: #fef3e8; }
+        .cal-day-num { font-size: 0.8rem; color: #8b5e3c; font-weight: bold; margin-bottom: 0.25rem; }
+        .cal-event-tag {
+            font-size: 0.68rem; padding: 0.1rem 0.35rem; border-radius: 3px;
+            margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; display: block;
+        }
+        .cal-event-tag:hover { opacity: 0.75; }
+        .cal-event-tag.medication { background-color: #d4edda; color: #2d6a4f; }
+        .cal-event-tag.appointment { background-color: #cce5ff; color: #1a4f7a; }
+        .cal-event-tag.other { background-color: #fff3cd; color: #7a5c0a; }
+
+        .cal-add-panel {
+            display: none; background-color: #fff8f0; border: 1px solid #e0c4a8;
+            border-radius: 8px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+        }
+        .cal-add-panel.open { display: block; }
+        .cal-add-panel h4 { color: #8b5e3c; margin-bottom: 1rem; font-size: 1rem; }
+        .cal-form-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.75rem; align-items: center; }
+        .cal-form-row input, .cal-form-row select {
+            padding: 0.45rem 0.75rem; border: 1px solid #e0c4a8; border-radius: 6px;
+            font-family: Georgia, serif; color: #5c3d2e; background-color: #fdf6ee; font-size: 0.9rem;
+        }
+        .cal-form-row input[type="text"] { flex: 1; min-width: 180px; }
+        .cal-save-btn {
+            padding: 0.45rem 1.25rem; background-color: #c28b5e; color: #fdf6ee;
+            border: none; border-radius: 20px; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer;
+        }
+        .cal-save-btn:hover { background-color: #8b5e3c; }
+        .cal-cancel-btn {
+            padding: 0.45rem 1rem; background: none; border: 1px solid #c28b5e;
+            border-radius: 20px; color: #8b5e3c; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer;
+        }
+        .cal-cancel-btn:hover { background-color: #f5e6d3; }
+
+        .upcoming-section { margin-top: 1.5rem; }
+        .upcoming-section h4 { color: #8b5e3c; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+        .upcoming-item {
+            display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+            padding: 0.55rem 0.75rem; background-color: #fff8f0; border: 1px solid #e0c4a8;
+            border-radius: 6px; margin-bottom: 0.4rem; flex-wrap: wrap;
+        }
+        .upcoming-item-date { font-size: 0.8rem; color: #a07050; white-space: nowrap; }
+        .upcoming-item button { background: none; border: none; color: #c28b5e; cursor: pointer; font-size: 1.1rem; flex-shrink: 0; }
+        .upcoming-item button:hover { color: #8b5e3c; }
+
         /* Caregiver tip groups */
         .tip-group {
             background-color: #fff8f0; border: 1px solid #e0c4a8; border-radius: 10px;
@@ -228,6 +289,7 @@
             <li><a href="#soft-foods">Soft Foods</a></li>
             <li><a href="#snacks">Snacks</a></li>
             <li><a href="#caregiver-tips">Caregiver Tips</a></li>
+            <li><a href="#calendar">Calendar</a></li>
         </ul>
     </nav>
 
@@ -1782,6 +1844,53 @@
 
             </div><!-- end section-body caregiver-tips -->
         </section>
+
+        <!-- CALENDAR -->
+        <section id="calendar" style="margin-top:1.5rem;">
+            <button class="section-tab" onclick="toggleSection('calendar')">
+                <span>Calendar</span>
+                <span class="tab-arrow">+</span>
+            </button>
+            <div class="section-body" id="body-calendar">
+
+                <div class="cal-header">
+                    <button class="cal-nav-btn" id="prev-month">&#8249;</button>
+                    <span class="cal-month-title" id="cal-month-title"></span>
+                    <button class="cal-nav-btn" id="next-month">&#8250;</button>
+                </div>
+
+                <div class="cal-grid" id="cal-grid">
+                    <div class="cal-day-header">Sun</div>
+                    <div class="cal-day-header">Mon</div>
+                    <div class="cal-day-header">Tue</div>
+                    <div class="cal-day-header">Wed</div>
+                    <div class="cal-day-header">Thu</div>
+                    <div class="cal-day-header">Fri</div>
+                    <div class="cal-day-header">Sat</div>
+                </div>
+
+                <div class="cal-add-panel" id="cal-add-panel">
+                    <h4>Add task for <span id="cal-selected-date"></span></h4>
+                    <div class="cal-form-row">
+                        <input type="text" id="cal-task-name" placeholder="e.g. Take anti-nausea medication">
+                        <select id="cal-task-type">
+                            <option value="medication">&#128138; Medication</option>
+                            <option value="appointment">&#127973; Doctor Appointment</option>
+                            <option value="other">&#128204; Other</option>
+                        </select>
+                        <input type="time" id="cal-task-time">
+                        <button class="cal-save-btn" id="cal-save-btn">Save</button>
+                        <button class="cal-cancel-btn" onclick="closeAddPanel()">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="upcoming-section">
+                    <h4>Upcoming Tasks</h4>
+                    <div id="upcoming-list"></div>
+                </div>
+
+            </div><!-- end section-body calendar -->
+        </section>
     </main>
 
     <div class="toast" id="toast"></div>
@@ -1959,6 +2068,137 @@
         }
 
         renderTracker();
+
+        // --- Calendar ---
+        const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        const SHORT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        let calYear = new Date().getFullYear();
+        let calMonth = new Date().getMonth();
+        let calEvents = JSON.parse(localStorage.getItem('hp-cal') || '{}');
+        let selectedDate = null;
+
+        function renderCalendar() {
+            const grid = document.getElementById('cal-grid');
+            document.getElementById('cal-month-title').textContent = MONTH_NAMES[calMonth] + ' ' + calYear;
+
+            grid.querySelectorAll('.cal-day, .cal-day.cal-empty').forEach(el => el.remove());
+
+            const firstDay = new Date(calYear, calMonth, 1).getDay();
+            const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+            const today = new Date();
+
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'cal-day cal-empty';
+                grid.appendChild(empty);
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateStr = calYear + '-' + String(calMonth + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+                const cell = document.createElement('div');
+                cell.className = 'cal-day';
+                if (d === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear()) {
+                    cell.classList.add('today');
+                }
+                const numEl = document.createElement('div');
+                numEl.className = 'cal-day-num';
+                numEl.textContent = d;
+                cell.appendChild(numEl);
+
+                (calEvents[dateStr] || []).forEach((ev, idx) => {
+                    const tag = document.createElement('span');
+                    tag.className = 'cal-event-tag ' + ev.type;
+                    tag.textContent = (ev.time ? ev.time + ' ' : '') + ev.name;
+                    tag.title = 'Click to remove';
+                    tag.onclick = (e) => { e.stopPropagation(); deleteCalEvent(dateStr, idx); };
+                    cell.appendChild(tag);
+                });
+
+                cell.onclick = () => openAddPanel(dateStr);
+                grid.appendChild(cell);
+            }
+            renderUpcoming();
+        }
+
+        function openAddPanel(dateStr) {
+            selectedDate = dateStr;
+            const [y, m, d] = dateStr.split('-');
+            document.getElementById('cal-selected-date').textContent = SHORT_MONTHS[parseInt(m) - 1] + ' ' + parseInt(d) + ', ' + y;
+            document.getElementById('cal-task-name').value = '';
+            document.getElementById('cal-task-time').value = '';
+            const panel = document.getElementById('cal-add-panel');
+            panel.classList.add('open');
+            document.getElementById('cal-task-name').focus();
+        }
+
+        function closeAddPanel() {
+            document.getElementById('cal-add-panel').classList.remove('open');
+            selectedDate = null;
+        }
+
+        function saveCalEvent() {
+            const name = document.getElementById('cal-task-name').value.trim();
+            if (!name || !selectedDate) return;
+            const type = document.getElementById('cal-task-type').value;
+            const time = document.getElementById('cal-task-time').value;
+            if (!calEvents[selectedDate]) calEvents[selectedDate] = [];
+            calEvents[selectedDate].push({ name, type, time });
+            localStorage.setItem('hp-cal', JSON.stringify(calEvents));
+            closeAddPanel();
+            renderCalendar();
+            showToast('Task saved');
+        }
+
+        function deleteCalEvent(dateStr, idx) {
+            calEvents[dateStr].splice(idx, 1);
+            if (calEvents[dateStr].length === 0) delete calEvents[dateStr];
+            localStorage.setItem('hp-cal', JSON.stringify(calEvents));
+            renderCalendar();
+        }
+
+        function renderUpcoming() {
+            const container = document.getElementById('upcoming-list');
+            container.innerHTML = '';
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const items = [];
+            Object.keys(calEvents).forEach(dateStr => {
+                const d = new Date(dateStr + 'T00:00:00');
+                if (d >= today) {
+                    calEvents[dateStr].forEach((ev, idx) => items.push({ dateStr, idx, d, ...ev }));
+                }
+            });
+            items.sort((a, b) => a.d - b.d || (a.time || '').localeCompare(b.time || ''));
+            if (items.length === 0) {
+                container.innerHTML = '<p style="font-size:0.875rem;color:#a07050;">No upcoming tasks. Click any day on the calendar to add one.</p>';
+                return;
+            }
+            const typeLabel = { medication: '💊 Medication', appointment: '🏥 Appointment', other: '📌 Other' };
+            items.forEach(item => {
+                const [y, m, d] = item.dateStr.split('-');
+                const dateLabel = SHORT_MONTHS[parseInt(m) - 1] + ' ' + parseInt(d) + ', ' + y;
+                const div = document.createElement('div');
+                div.className = 'upcoming-item';
+                div.innerHTML = `
+                    <span class="cal-event-tag ${item.type}" style="font-size:0.82rem;">${typeLabel[item.type] || item.type}: ${item.name}</span>
+                    <span class="upcoming-item-date">${dateLabel}${item.time ? ' at ' + item.time : ''}</span>
+                    <button onclick="deleteCalEvent('${item.dateStr}', ${item.idx})" title="Remove">&times;</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        document.getElementById('prev-month').addEventListener('click', () => {
+            if (--calMonth < 0) { calMonth = 11; calYear--; }
+            renderCalendar();
+        });
+        document.getElementById('next-month').addEventListener('click', () => {
+            if (++calMonth > 11) { calMonth = 0; calYear++; }
+            renderCalendar();
+        });
+        document.getElementById('cal-save-btn').addEventListener('click', saveCalEvent);
+        document.getElementById('cal-task-name').addEventListener('keydown', e => { if (e.key === 'Enter') saveCalEvent(); });
+
+        renderCalendar();
     </script>
 </body>
 </html>
