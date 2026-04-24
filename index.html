@@ -14,11 +14,12 @@
             font-family: Georgia, serif;
             background-color: #fdf6ee;
             color: #5c3d2e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
             text-align: center;
+        }
+
+        header {
+            padding: 3rem 1rem 2rem;
         }
 
         h1 {
@@ -26,9 +27,47 @@
             letter-spacing: 0.05em;
             color: #8b5e3c;
         }
+
+        nav {
+            background-color: #c28b5e;
+            padding: 0.75rem 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 0.5rem 1.25rem;
+            color: #fdf6ee;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        nav ul li a:hover {
+            background-color: #8b5e3c;
+        }
     </style>
 </head>
 <body>
-    <h1>Healing Plates</h1>
+    <header>
+        <h1>Healing Plates</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#smoothies">Smoothies &amp; Shakes</a></li>
+            <li><a href="#soups">Soups</a></li>
+            <li><a href="#soft-foods">Soft Foods</a></li>
+            <li><a href="#snacks">Snacks</a></li>
+            <li><a href="#caregiver-tips">Caregiver Tips</a></li>
+        </ul>
+    </nav>
 </body>
 </html>
