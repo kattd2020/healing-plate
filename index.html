@@ -4988,6 +4988,12 @@
 
         const TAG_LABELS = { chicken:'Chicken', turkey:'Turkey', beef:'Beef', egg:'Egg', tofu:'Tofu', vegetarian:'Vegetarian' };
 
+        // --- Filter state (declared early so tag handlers can reference them) ---
+        let activeSymptom   = 'all';
+        let activeTexture   = 'all';
+        let activeIngredient = 'all';
+        let searchQuery     = '';
+
         // Inject data-ingredient attributes and render tag badges on all cards
         document.querySelectorAll('.recipe-card').forEach(card => {
             const name = card.querySelector('h3').textContent.trim();
@@ -5001,8 +5007,9 @@
                 span.className = `tag-ingredient tag-${t}`;
                 span.textContent = TAG_LABELS[t];
                 span.title = `Filter by ${TAG_LABELS[t]}`;
-                span.addEventListener('click', () => {
-                    document.querySelectorAll('[data-ingredient]').forEach(b => b.classList.remove('active'));
+                span.addEventListener('click', e => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.filter-btn[data-ingredient]').forEach(b => b.classList.remove('active'));
                     const filterBtn = document.querySelector(`.filter-btn[data-ingredient="${t}"]`);
                     if (filterBtn) filterBtn.classList.add('active');
                     activeIngredient = t;
@@ -5034,32 +5041,26 @@
             });
         });
 
-        // --- Filters ---
-        let activeSymptom = 'all';
-        let activeTexture = 'all';
-        let activeIngredient = 'all';
-        let searchQuery = '';
-
-        document.querySelectorAll('[data-symptom]').forEach(btn => {
+        // --- Filter button event listeners (scoped to .filter-btn only) ---
+        document.querySelectorAll('.filter-btn[data-symptom]').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('[data-symptom]').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-btn[data-symptom]').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeSymptom = btn.dataset.symptom;
                 applyFilters();
             });
         });
 
-        document.querySelectorAll('[data-texture]').forEach(btn => {
+        document.querySelectorAll('.filter-btn[data-texture]').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('[data-texture]').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-btn[data-texture]').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeTexture = btn.dataset.texture;
                 applyFilters();
             });
         });
 
-        document.querySelectorAll('[data-ingredient]').forEach(btn => {
-            if (!btn.classList.contains('filter-btn')) return;
+        document.querySelectorAll('.filter-btn[data-ingredient]').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn[data-ingredient]').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
@@ -5075,16 +5076,16 @@
 
         function applyFilters() {
             document.querySelectorAll('.recipe-card').forEach(card => {
-                const symptoms = (card.dataset.symptoms || '').split(',');
+                const symptoms    = (card.dataset.symptoms   || '').split(',');
                 const ingredients = (card.dataset.ingredient || '').split(',');
 
-                const symptomMatch   = activeSymptom   === 'all' || symptoms.includes(activeSymptom);
-                const textureMatch   = activeTexture   === 'all' || card.dataset.texture === activeTexture;
+                const symptomMatch    = activeSymptom    === 'all' || symptoms.includes(activeSymptom);
+                const textureMatch    = activeTexture    === 'all' || card.dataset.texture === activeTexture;
                 const ingredientMatch = activeIngredient === 'all' || ingredients.includes(activeIngredient);
 
                 let searchMatch = true;
                 if (searchQuery) {
-                    const name = (card.querySelector('h3')?.textContent || '').toLowerCase();
+                    const name    = (card.querySelector('h3')?.textContent       || '').toLowerCase();
                     const ingList = (card.querySelector('.ingredients')?.textContent || '').toLowerCase();
                     searchMatch = name.includes(searchQuery) || ingList.includes(searchQuery);
                 }
