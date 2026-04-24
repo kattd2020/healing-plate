@@ -85,6 +85,37 @@
         /* Filters */
         .filters { max-width: 860px; margin: 2rem auto 0; padding: 0 1.5rem; }
 
+        /* Search bar */
+        .search-wrap {
+            max-width: 860px; margin: 1.5rem auto 0; padding: 0 1.5rem;
+        }
+        .search-wrap input {
+            width: 100%; padding: 0.65rem 1.1rem 0.65rem 2.6rem;
+            border: 1.5px solid #c28b5e; border-radius: 24px;
+            font-family: 'DM Sans', Georgia, sans-serif; font-size: 1rem;
+            color: #5c3d2e; background-color: #fdf6ee;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c28b5e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: 0.85rem center;
+        }
+        .search-wrap input:focus { border-color: #8b5e3c; box-shadow: 0 0 0 3px rgba(194,139,94,0.18); }
+        .search-wrap input::placeholder { color: #b09070; }
+
+        /* Ingredient tags on cards */
+        .ingredient-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+        .tag-ingredient {
+            font-size: 0.72rem; padding: 0.15rem 0.55rem; border-radius: 10px;
+            font-family: 'DM Sans', sans-serif; font-weight: 600; letter-spacing: 0.03em;
+            cursor: pointer; transition: opacity 0.15s; border: 1px solid transparent;
+        }
+        .tag-ingredient:hover { opacity: 0.75; }
+        .tag-chicken  { background-color: #fde8c8; color: #7a4010; border-color: #f0b870; }
+        .tag-turkey   { background-color: #dff0e4; color: #1e5c35; border-color: #7ec89a; }
+        .tag-beef     { background-color: #f5dbd8; color: #7a1c1c; border-color: #e09090; }
+        .tag-egg      { background-color: #fefbd0; color: #6b5a00; border-color: #d4c440; }
+        .tag-tofu     { background-color: #ede8f8; color: #3d2a70; border-color: #b8a8e0; }
+        .tag-vegetarian { background-color: #d8f0e0; color: #1e5c35; border-color: #7ec89a; }
+
         .disclaimer {
             max-width: 860px;
             margin: 1.5rem auto 0;
@@ -374,6 +405,11 @@
         <button class="tracker-reset" id="reset-day">Reset Day</button>
     </div>
 
+    <!-- Search -->
+    <div class="search-wrap">
+        <input type="text" id="recipe-search" placeholder="Search recipes or ingredients&hellip;" autocomplete="off">
+    </div>
+
     <!-- Filters -->
     <div class="filters">
         <div class="filter-group">
@@ -389,6 +425,16 @@
             <button class="filter-btn" data-texture="liquid">Liquid</button>
             <button class="filter-btn" data-texture="soft">Soft</button>
             <button class="filter-btn" data-texture="finger-food">Finger Foods</button>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">Ingredient:</span>
+            <button class="filter-btn active" data-ingredient="all">All</button>
+            <button class="filter-btn" data-ingredient="chicken">Chicken</button>
+            <button class="filter-btn" data-ingredient="turkey">Turkey</button>
+            <button class="filter-btn" data-ingredient="beef">Beef</button>
+            <button class="filter-btn" data-ingredient="egg">Egg</button>
+            <button class="filter-btn" data-ingredient="tofu">Tofu</button>
+            <button class="filter-btn" data-ingredient="vegetarian">Vegetarian</button>
         </div>
     </div>
 
@@ -4590,9 +4636,112 @@
             setTimeout(() => win.print(), 400);
         }
 
+        // --- Ingredient tag map ---
+        const INGREDIENT_MAP = {
+            // Smoothies & Shakes
+            'High-Calorie Vanilla Milkshake':               ['vegetarian'],
+            'Banana Ginger Smoothie':                        ['vegetarian'],
+            'Chocolate Peanut Butter Shake':                 ['vegetarian'],
+            'Mango Peach Creamsicle Smoothie':               ['vegetarian'],
+            'Strawberry Vanilla Cream Smoothie':             ['vegetarian'],
+            'Avocado Honey Smoothie':                        ['vegetarian'],
+            'Blueberry Oat Smoothie':                        ['vegetarian'],
+            'Vanilla Boost Power Shake':                     ['vegetarian'],
+            'Chocolate Avocado Ensure Smoothie':             ['vegetarian'],
+            'Strawberry Cheesecake Ensure Shake':            ['vegetarian'],
+            'Tropical Mango Ensure Smoothie':                ['vegetarian'],
+            // Soups
+            'Creamy Potato Leek Soup':                       ['vegetarian'],
+            'Pureed Butternut Squash Soup':                  ['vegetarian'],
+            'Creamy Chicken Noodle Soup':                    ['chicken'],
+            'Sweet Corn Chowder':                            ['vegetarian'],
+            'Broccoli Cheddar Soup':                         ['vegetarian'],
+            'Simple Sipping Bone Broth':                     ['beef'],
+            'Ginger Bone Broth':                             ['beef'],
+            'Bone Broth with Soft Noodles & Chicken':        ['chicken', 'beef'],
+            'Smooth Red Lentil Soup':                        ['vegetarian'],
+            'Creamy White Bean Soup':                        ['vegetarian'],
+            // Soft Foods
+            'Buttery Mashed Potatoes':                       ['vegetarian'],
+            'Soft Scrambled Eggs with Cream Cheese':         ['egg', 'vegetarian'],
+            'Banana Oatmeal with Honey':                     ['vegetarian'],
+            'Creamy Avocado on Soft White Bread':            ['vegetarian'],
+            'Honey Ricotta Bowl':                            ['vegetarian'],
+            'Greek Yogurt with Honey and Banana':            ['vegetarian'],
+            'Peanut Butter and Honey on Soft Crackers':      ['vegetarian'],
+            'Mild Cheese and Soft Crackers':                 ['vegetarian'],
+            'Homemade Vanilla Pudding':                      ['vegetarian'],
+            'Cottage Cheese with Soft Fruit':                ['vegetarian'],
+            // Snacks
+            'Silken Tofu Vanilla Pudding':                   ['tofu', 'vegetarian'],
+            'No-Bake Peanut Butter Oat Bites':               ['vegetarian'],
+            'Honey Sweet Potato Mash':                       ['vegetarian'],
+            'Banana Rice Porridge':                          ['vegetarian'],
+            'Cinnamon Stewed Pears':                         ['vegetarian'],
+            'Creamy Oat Porridge with Soft Apple':           ['vegetarian'],
+            'Pearl Barley Porridge':                         ['vegetarian'],
+            // Plant Proteins
+            'Soft Tofu Scramble':                            ['tofu', 'egg', 'vegetarian'],
+            // Healthy Carbs (shared names handled below)
+            // Insulin-Friendly
+            'Greek Yogurt Protein Smoothie (Low Sugar)':     ['vegetarian'],
+            'Avocado Cocoa Protein Shake (Low Sugar)':       ['vegetarian'],
+            'Peanut Butter Cinnamon Protein Shake (Low Sugar)': ['vegetarian'],
+            'Strawberry Vanilla Protein Shake (Low Sugar)':  ['vegetarian'],
+            'Creamy Vanilla Protein Shake (Low Sugar)':      ['vegetarian'],
+            'Creamy Cauliflower Soup (Low Carb)':            ['vegetarian'],
+            'Creamy Cauliflower Mash (Low Carb)':            ['vegetarian'],
+            'Cinnamon Vanilla Chia Pudding (Low Sugar)':     ['vegetarian'],
+            'Almond Butter Celery Boats (Low Sugar)':        ['vegetarian'],
+            'Greek Yogurt with Berries & Walnuts (Low Sugar)': ['vegetarian'],
+            'Hard-Boiled Egg with Avocado (Low Sugar)':      ['egg', 'vegetarian'],
+            'Savory Tofu Avocado Mash (Low Sugar)':          ['tofu', 'vegetarian'],
+            'Steel-Cut Oats with Chia & Cinnamon (Low Glycemic)': ['vegetarian'],
+            'Sheet Pan Herb Chicken & Zucchini (Low Carb)':  ['chicken'],
+            'Ground Turkey & Cauliflower Rice Bowl (Low Carb)': ['turkey'],
+            'Baked Chicken Thighs with Soft Roasted Carrots (Low Glycemic)': ['chicken'],
+            'Turkey & Egg Scramble with Spinach (Low Carb)': ['turkey', 'egg'],
+            // Dinner
+            'Baked Lemon-Herb Chicken & Sweet Potato':       ['chicken'],
+            'Ginger Turkey & Rice Bowl':                     ['turkey'],
+            'Broth-Poached Chicken with Herbed Quinoa':      ['chicken'],
+            'Shredded Chicken & Rice in Ginger Broth':       ['chicken'],
+            'Baked Turkey Meatballs with Sweet Potato Mash': ['turkey', 'egg'],
+        };
+
+        const TAG_LABELS = { chicken:'Chicken', turkey:'Turkey', beef:'Beef', egg:'Egg', tofu:'Tofu', vegetarian:'Vegetarian' };
+
+        // Inject data-ingredient attributes and render tag badges on all cards
+        document.querySelectorAll('.recipe-card').forEach(card => {
+            const name = card.querySelector('h3').textContent.trim();
+            const tags = INGREDIENT_MAP[name];
+            if (!tags) return;
+            card.dataset.ingredient = tags.join(',');
+            const wrap = document.createElement('div');
+            wrap.className = 'ingredient-tags';
+            tags.forEach(t => {
+                const span = document.createElement('span');
+                span.className = `tag-ingredient tag-${t}`;
+                span.textContent = TAG_LABELS[t];
+                span.title = `Filter by ${TAG_LABELS[t]}`;
+                span.addEventListener('click', () => {
+                    document.querySelectorAll('[data-ingredient]').forEach(b => b.classList.remove('active'));
+                    const filterBtn = document.querySelector(`.filter-btn[data-ingredient="${t}"]`);
+                    if (filterBtn) filterBtn.classList.add('active');
+                    activeIngredient = t;
+                    applyFilters();
+                });
+                wrap.appendChild(span);
+            });
+            const header = card.querySelector('.card-header');
+            header.after(wrap);
+        });
+
         // --- Filters ---
         let activeSymptom = 'all';
         let activeTexture = 'all';
+        let activeIngredient = 'all';
+        let searchQuery = '';
 
         document.querySelectorAll('[data-symptom]').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -4612,12 +4761,38 @@
             });
         });
 
+        document.querySelectorAll('[data-ingredient]').forEach(btn => {
+            if (!btn.classList.contains('filter-btn')) return;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn[data-ingredient]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeIngredient = btn.dataset.ingredient;
+                applyFilters();
+            });
+        });
+
+        document.getElementById('recipe-search').addEventListener('input', function() {
+            searchQuery = this.value.trim().toLowerCase();
+            applyFilters();
+        });
+
         function applyFilters() {
             document.querySelectorAll('.recipe-card').forEach(card => {
                 const symptoms = (card.dataset.symptoms || '').split(',');
-                const symptomMatch = activeSymptom === 'all' || symptoms.includes(activeSymptom);
-                const textureMatch = activeTexture === 'all' || card.dataset.texture === activeTexture;
-                card.classList.toggle('hidden', !(symptomMatch && textureMatch));
+                const ingredients = (card.dataset.ingredient || '').split(',');
+
+                const symptomMatch   = activeSymptom   === 'all' || symptoms.includes(activeSymptom);
+                const textureMatch   = activeTexture   === 'all' || card.dataset.texture === activeTexture;
+                const ingredientMatch = activeIngredient === 'all' || ingredients.includes(activeIngredient);
+
+                let searchMatch = true;
+                if (searchQuery) {
+                    const name = (card.querySelector('h3')?.textContent || '').toLowerCase();
+                    const ingList = (card.querySelector('.ingredients')?.textContent || '').toLowerCase();
+                    searchMatch = name.includes(searchQuery) || ingList.includes(searchQuery);
+                }
+
+                card.classList.toggle('hidden', !(symptomMatch && textureMatch && ingredientMatch && searchMatch));
             });
         }
 
