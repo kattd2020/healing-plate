@@ -5176,6 +5176,14 @@
 
                 card.classList.toggle('hidden', !(symptomMatch && textureMatch && ingredientMatch && searchMatch));
             });
+
+            // Hide sections that have no visible recipe cards when a filter is active
+            if (anyFilterActive) {
+                document.querySelectorAll('main > section').forEach(section => {
+                    const hasVisible = section.querySelector('.recipe-card:not(.hidden)');
+                    section.classList.toggle('active', !!hasVisible);
+                });
+            }
         }
 
         // --- Toast ---
