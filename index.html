@@ -118,21 +118,14 @@
         /* Main */
         main { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 3rem; text-align: left; }
 
-        .section-tab {
-            width: 100%; display: flex; justify-content: space-between; align-items: center;
-            padding: 1rem 1.5rem; background-color: #c28b5e; color: #fdf6ee;
-            border: none; border-radius: 8px; font-family: 'DM Sans', Georgia, sans-serif; font-size: 1.3rem; font-weight: 600;
-            cursor: pointer; text-align: left; transition: background-color 0.2s; margin-bottom: 0;
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 1.5rem; }
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem; color: #8b5e3c; padding: 1rem 0 0.75rem;
+            border-bottom: 2px solid #e0c4a8; margin-bottom: 1.5rem;
         }
-        .section-tab:hover { background-color: #8b5e3c; }
-        .section-tab.open { border-radius: 8px 8px 0 0; }
-        .tab-arrow { font-size: 1.4rem; transition: transform 0.2s; flex-shrink: 0; }
-        .section-body {
-            display: none; padding: 1.75rem 1.5rem;
-            border: 1px solid #e0c4a8; border-top: none;
-            border-radius: 0 0 8px 8px; background-color: #fdf6ee;
-        }
-        .section-body.open { display: block; }
+        .section-body { padding: 0.5rem 0 1rem; }
         .recipe-card + .recipe-card { margin-top: 2rem; }
 
         /* Calendar */
@@ -401,10 +394,7 @@
 
     <main>
         <section id="smoothies">
-            <button class="section-tab" onclick="toggleSection('smoothies')">
-                <span>Smoothies &amp; Shakes</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Smoothies &amp; Shakes</h2>
             <div class="section-body" id="body-smoothies">
 
             <div class="recipe-card"
@@ -1119,10 +1109,7 @@
         </section>
 
         <section id="soups" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('soups')">
-                <span>Soups</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Soups</h2>
             <div class="section-body" id="body-soups">
 
             <div class="recipe-card"
@@ -1637,10 +1624,7 @@
 
         <!-- SOFT FOODS -->
         <section id="soft-foods" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('soft-foods')">
-                <span>Soft Foods</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Soft Foods</h2>
             <div class="section-body" id="body-soft-foods">
 
             <div class="recipe-card"
@@ -1953,10 +1937,7 @@
 
         <!-- SNACKS -->
         <section id="snacks" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('snacks')">
-                <span>Snacks</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Snacks</h2>
             <div class="section-body" id="body-snacks">
 
             <div class="recipe-card"
@@ -2261,10 +2242,7 @@
 
         <!-- CAREGIVER TIPS -->
         <section id="caregiver-tips" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('caregiver-tips')">
-                <span>Caregiver Tips</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Caregiver Tips</h2>
             <div class="section-body" id="body-caregiver-tips">
 
                 <div class="tip-group">
@@ -2335,10 +2313,7 @@
 
         <!-- PLANT BASED PROTEINS -->
         <section id="plant-proteins" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('plant-proteins')">
-                <span>Plant Based Proteins</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Plant Based Proteins</h2>
             <div class="section-body" id="body-plant-proteins">
 
             <div class="recipe-card"
@@ -2656,10 +2631,7 @@
 
         <!-- HEALTHY CARBS -->
         <section id="healthy-carbs" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('healthy-carbs')">
-                <span>Healthy Carbs</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Healthy Carbs</h2>
             <div class="section-body" id="body-healthy-carbs">
 
             <p style="font-size:0.9rem;color:#7a4f30;margin-bottom:1.5rem;background:#fdebd0;padding:0.75rem 1rem;border-radius:6px;border-left:4px solid #c28b5e;">
@@ -2989,10 +2961,7 @@
 
         <!-- INSULIN-FRIENDLY -->
         <section id="insulin-friendly" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('insulin-friendly')">
-                <span>Insulin-Friendly</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Insulin-Friendly</h2>
             <div class="section-body" id="body-insulin-friendly">
 
             <div class="recipe-card"
@@ -4089,10 +4058,7 @@
 
         <!-- DINNER -->
         <section id="dinner" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('dinner')">
-                <span>Dinner</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Dinner</h2>
             <div class="section-body" id="body-dinner">
 
             <div class="recipe-card"
@@ -4429,10 +4395,7 @@
 
         <!-- CALENDAR -->
         <section id="calendar" style="margin-top:1.5rem;">
-            <button class="section-tab" onclick="toggleSection('calendar')">
-                <span>Calendar</span>
-                <span class="tab-arrow">+</span>
-            </button>
+            <h2 class="section-title">Calendar</h2>
             <div class="section-body" id="body-calendar">
 
                 <div class="cal-header">
@@ -4587,14 +4550,6 @@
                 panel.classList.contains('open') ? '▼ Daily Goal Tracker' : '▶ Daily Goal Tracker';
         });
 
-        // --- Section accordion ---
-        function toggleSection(id) {
-            const body = document.getElementById('body-' + id);
-            const tab = body.previousElementSibling;
-            const isOpen = body.classList.toggle('open');
-            tab.classList.toggle('open', isOpen);
-            tab.querySelector('.tab-arrow').textContent = isOpen ? '−' : '+';
-        }
 
         // --- Boost tips toggle ---
         function toggleBoost(btn) {
