@@ -1885,6 +1885,20 @@
                             <option>7</option><option>8</option><option>9</option>
                             <option>10</option><option>11</option><option>12</option>
                         </select>
+                        <select id="cal-task-min">
+                            <option value="00">:00</option>
+                            <option value="05">:05</option>
+                            <option value="10">:10</option>
+                            <option value="15">:15</option>
+                            <option value="20">:20</option>
+                            <option value="25">:25</option>
+                            <option value="30">:30</option>
+                            <option value="35">:35</option>
+                            <option value="40">:40</option>
+                            <option value="45">:45</option>
+                            <option value="50">:50</option>
+                            <option value="55">:55</option>
+                        </select>
                         <select id="cal-task-ampm">
                             <option value="">-- AM/PM --</option>
                             <option>AM</option>
@@ -2137,6 +2151,7 @@
             document.getElementById('cal-selected-date').textContent = SHORT_MONTHS[parseInt(m) - 1] + ' ' + parseInt(d) + ', ' + y;
             document.getElementById('cal-task-name').value = '';
             document.getElementById('cal-task-hour').value = '';
+            document.getElementById('cal-task-min').value = '00';
             document.getElementById('cal-task-ampm').value = '';
             const panel = document.getElementById('cal-add-panel');
             panel.classList.add('open');
@@ -2153,8 +2168,9 @@
             if (!name || !selectedDate) return;
             const type = document.getElementById('cal-task-type').value;
             const hour = document.getElementById('cal-task-hour').value;
+            const min = document.getElementById('cal-task-min').value;
             const ampm = document.getElementById('cal-task-ampm').value;
-            const time = hour && ampm ? hour + ' ' + ampm : '';
+            const time = hour && ampm ? hour + ':' + min + ' ' + ampm : '';
             if (!calEvents[selectedDate]) calEvents[selectedDate] = [];
             calEvents[selectedDate].push({ name, type, time });
             localStorage.setItem('hp-cal', JSON.stringify(calEvents));
