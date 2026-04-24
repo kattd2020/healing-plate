@@ -111,6 +111,26 @@
         .section-body.open { display: block; }
         .recipe-card + .recipe-card { margin-top: 2rem; }
 
+        /* Caregiver tip groups */
+        .tip-group {
+            background-color: #fff8f0; border: 1px solid #e0c4a8; border-radius: 10px;
+            padding: 1.5rem 1.75rem; margin-bottom: 1.25rem;
+        }
+        .tip-group-title {
+            font-size: 1.1rem; color: #8b5e3c; margin-bottom: 1rem;
+        }
+        .tip-list {
+            list-style: none; padding: 0;
+        }
+        .tip-list li {
+            padding: 0.5rem 0; border-bottom: 1px solid #f0dcc8; font-size: 0.95rem; line-height: 1.6;
+            padding-left: 1.25rem; position: relative;
+        }
+        .tip-list li:last-child { border-bottom: none; }
+        .tip-list li::before {
+            content: "–"; position: absolute; left: 0; color: #c28b5e; font-weight: bold;
+        }
+
         /* Recipe card */
         .recipe-card {
             background-color: #fff8f0; border: 1px solid #e0c4a8; border-radius: 10px;
@@ -1687,6 +1707,80 @@
             </div>
 
             </div><!-- end section-body snacks -->
+        </section>
+
+        <!-- CAREGIVER TIPS -->
+        <section id="caregiver-tips" style="margin-top:1.5rem;">
+            <button class="section-tab" onclick="toggleSection('caregiver-tips')">
+                <span>Caregiver Tips</span>
+                <span class="tab-arrow">+</span>
+            </button>
+            <div class="section-body" id="body-caregiver-tips">
+
+                <div class="tip-group">
+                    <h3 class="tip-group-title">&#127859; Helping with Food &amp; Nutrition</h3>
+                    <ul class="tip-list">
+                        <li>Offer small amounts of food every 2–3 hours rather than pushing three full meals. A few bites at a time adds up.</li>
+                        <li>Keep easy, ready-to-eat options on hand — yogurt, pudding, crackers with peanut butter — so eating requires no effort from them.</li>
+                        <li>Cook with as little smell as possible on hard days. Cold foods and room-temperature foods produce far less odor than hot meals.</li>
+                        <li>Let them choose. Even if their requests seem odd or limited, honoring food preferences helps maintain a sense of control.</li>
+                        <li>Add butter, cream, or nut butter to foods quietly without making it a production — just boost calories where you can.</li>
+                        <li>Keep a water bottle, herbal tea, or diluted juice nearby at all times. Sipping throughout the day prevents dehydration without feeling overwhelming.</li>
+                        <li>Note which foods they tolerated well and which caused issues. Patterns emerge over treatment cycles and you can plan ahead.</li>
+                        <li>Avoid strong-smelling foods like garlic, onion, fish, and cruciferous vegetables on nausea days.</li>
+                    </ul>
+                </div>
+
+                <div class="tip-group">
+                    <h3 class="tip-group-title">&#129656; Managing Mouth Sores &amp; Sensitivity</h3>
+                    <ul class="tip-list">
+                        <li>Rinse their mouth with a saltwater or baking soda rinse before meals — it clears bacteria and reduces pain while eating.</li>
+                        <li>Serve foods lukewarm or cool. Hot foods irritate inflamed tissue significantly.</li>
+                        <li>Avoid acidic foods (citrus, tomato, vinegar) and anything crunchy, sharp, or rough-edged.</li>
+                        <li>Use a soft-bristle toothbrush or a foam swab if regular brushing is too painful.</li>
+                        <li>Ask their oncology team about prescription mouth rinses if sores become severe — this is very manageable with the right treatment.</li>
+                    </ul>
+                </div>
+
+                <div class="tip-group">
+                    <h3 class="tip-group-title">&#128166; Managing Nausea</h3>
+                    <ul class="tip-list">
+                        <li>Offer food before nausea peaks. Many patients feel best in the morning before fatigue and medication side effects build up.</li>
+                        <li>Ginger tea, ginger chews, or ginger in smoothies is one of the most effective natural nausea aids — keep it stocked.</li>
+                        <li>Cold and room-temperature foods are almost always better tolerated than hot foods on nausea days.</li>
+                        <li>Encourage eating in a well-ventilated room away from cooking smells.</li>
+                        <li>Small, frequent bites work better than sitting down to a full plate. Remove the plate if they feel overwhelmed by it.</li>
+                        <li>Anti-nausea medications are most effective when taken on schedule — help them stay consistent with timing.</li>
+                    </ul>
+                </div>
+
+                <div class="tip-group">
+                    <h3 class="tip-group-title">&#10084;&#65039; Emotional Support</h3>
+                    <ul class="tip-list">
+                        <li>Don't make food a battleground. Pressure and anxiety around eating makes things worse. Gentle encouragement is enough.</li>
+                        <li>Sit with them while they eat, even if you're just having a cup of tea. Company makes meals feel less like a chore.</li>
+                        <li>Ask "what sounds good to you?" instead of presenting a full meal. Having a choice — even a tiny one — matters a lot.</li>
+                        <li>Acknowledge bad days without trying to fix them. Sometimes "that sounds really hard" is more helpful than solutions.</li>
+                        <li>Celebrate small wins. Two bites of oatmeal on a terrible nausea day is genuinely worth acknowledging.</li>
+                        <li>Don't take food refusals personally. Loss of appetite is a physical symptom, not a rejection of your effort.</li>
+                        <li>Ask them directly what kind of support they want — some people want distraction and conversation, others want quiet. Check in rather than assuming.</li>
+                        <li>Let them feel whatever they feel. You don't need to reframe everything as positive. Being present is enough.</li>
+                    </ul>
+                </div>
+
+                <div class="tip-group">
+                    <h3 class="tip-group-title">&#129681; Taking Care of Yourself</h3>
+                    <ul class="tip-list">
+                        <li>Caregiver burnout is real. You cannot pour from an empty cup — your health matters too.</li>
+                        <li>Accept help when it's offered. Let others bring meals, run errands, or sit with your loved one so you can rest.</li>
+                        <li>Find one person you can talk to honestly about how you're doing — a friend, therapist, or caregiver support group.</li>
+                        <li>It's okay to feel frustrated, scared, or grief-stricken. These feelings don't make you a bad caregiver.</li>
+                        <li>Batch-cook when you have energy. Having soups or soft foods ready in the freezer reduces daily pressure enormously.</li>
+                        <li>Ask the oncology team what to expect in upcoming treatment cycles so you can prepare rather than react.</li>
+                    </ul>
+                </div>
+
+            </div><!-- end section-body caregiver-tips -->
         </section>
     </main>
 
