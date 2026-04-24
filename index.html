@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healing Plates</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;600&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: Georgia, serif;
+            font-family: 'DM Sans', Georgia, sans-serif;
             background-color: #fdf6ee;
             color: #5c3d2e;
             min-height: 100vh;
@@ -16,7 +18,7 @@
 
         header { padding: 3rem 1rem 2rem; text-align: center; }
 
-        h1 { font-size: 3rem; letter-spacing: 0.05em; color: #8b5e3c; }
+        h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 3rem; letter-spacing: 0.05em; color: #8b5e3c; }
 
         /* Nav */
         nav { background-color: #c28b5e; padding: 0.75rem 1rem; }
@@ -33,7 +35,7 @@
         }
         .tracker-toggle button {
             background: none; border: none; color: #8b5e3c;
-            font-family: Georgia, serif; font-size: 0.95rem; cursor: pointer; padding: 0.25rem 0.75rem;
+            font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.95rem; cursor: pointer; padding: 0.25rem 0.75rem;
         }
         .tracker-toggle button:hover { text-decoration: underline; }
 
@@ -53,7 +55,7 @@
         .goal-input label { font-size: 0.85rem; color: #a07050; text-transform: uppercase; letter-spacing: 0.05em; }
         .goal-input input {
             width: 100px; padding: 0.4rem 0.6rem; border: 1px solid #e0c4a8; border-radius: 6px;
-            background-color: #fdf6ee; color: #5c3d2e; font-family: Georgia, serif; font-size: 1rem; text-align: center;
+            background-color: #fdf6ee; color: #5c3d2e; font-family: 'DM Sans', Georgia, sans-serif; font-size: 1rem; text-align: center;
         }
 
         .tracker-bars { max-width: 500px; margin: 0 auto 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
@@ -76,7 +78,7 @@
         .tracker-reset {
             display: block; margin: 0 auto; padding: 0.4rem 1.25rem;
             background: none; border: 1px solid #c28b5e; border-radius: 20px; color: #8b5e3c;
-            font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
+            font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
         }
         .tracker-reset:hover { background-color: #f5e6d3; }
 
@@ -86,7 +88,7 @@
         .filter-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #a07050; min-width: 90px; }
         .filter-btn {
             padding: 0.35rem 0.85rem; border: 1px solid #c28b5e; border-radius: 20px;
-            background: none; color: #8b5e3c; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.15s, color 0.15s;
+            background: none; color: #8b5e3c; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.15s, color 0.15s;
         }
         .filter-btn:hover { background-color: #f5e6d3; }
         .filter-btn.active { background-color: #c28b5e; color: #fdf6ee; border-color: #c28b5e; }
@@ -97,7 +99,7 @@
         .section-tab {
             width: 100%; display: flex; justify-content: space-between; align-items: center;
             padding: 1rem 1.5rem; background-color: #c28b5e; color: #fdf6ee;
-            border: none; border-radius: 8px; font-family: Georgia, serif; font-size: 1.3rem;
+            border: none; border-radius: 8px; font-family: 'DM Sans', Georgia, sans-serif; font-size: 1.3rem; font-weight: 600;
             cursor: pointer; text-align: left; transition: background-color 0.2s; margin-bottom: 0;
         }
         .section-tab:hover { background-color: #8b5e3c; }
@@ -118,7 +120,7 @@
             color: #8b5e3c; font-size: 1.2rem; padding: 0.3rem 0.9rem; cursor: pointer; transition: background-color 0.2s;
         }
         .cal-nav-btn:hover { background-color: #f5e6d3; }
-        .cal-month-title { font-size: 1.2rem; color: #8b5e3c; font-family: Georgia, serif; }
+        .cal-month-title { font-size: 1.2rem; color: #8b5e3c; font-family: 'DM Sans', Georgia, sans-serif; }
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
         .cal-day-header { text-align: center; font-size: 0.75rem; color: #a07050; padding: 0.4rem 0; text-transform: uppercase; letter-spacing: 0.05em; }
         .cal-day {
@@ -147,17 +149,17 @@
         .cal-form-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.75rem; align-items: center; }
         .cal-form-row input, .cal-form-row select {
             padding: 0.45rem 0.75rem; border: 1px solid #e0c4a8; border-radius: 6px;
-            font-family: Georgia, serif; color: #5c3d2e; background-color: #fdf6ee; font-size: 0.9rem;
+            font-family: 'DM Sans', Georgia, sans-serif; color: #5c3d2e; background-color: #fdf6ee; font-size: 0.9rem;
         }
         .cal-form-row input[type="text"] { flex: 1; min-width: 180px; }
         .cal-save-btn {
             padding: 0.45rem 1.25rem; background-color: #c28b5e; color: #fdf6ee;
-            border: none; border-radius: 20px; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer;
+            border: none; border-radius: 20px; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer;
         }
         .cal-save-btn:hover { background-color: #8b5e3c; }
         .cal-cancel-btn {
             padding: 0.45rem 1rem; background: none; border: 1px solid #c28b5e;
-            border-radius: 20px; color: #8b5e3c; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer;
+            border-radius: 20px; color: #8b5e3c; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer;
         }
         .cal-cancel-btn:hover { background-color: #f5e6d3; }
 
@@ -175,7 +177,7 @@
         /* Substitutions panel */
         .btn-subs {
             padding: 0.5rem 1.25rem; background: none; border: 1px solid #7aab90;
-            border-radius: 20px; color: #2d6a4f; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
+            border-radius: 20px; color: #2d6a4f; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
         }
         .btn-subs:hover { background-color: #e8f4ee; }
         .subs-panel { margin-top: 1rem; background-color: #f0faf4; border: 1px dashed #7aab90; border-radius: 8px; padding: 1rem 1.25rem; display: none; }
@@ -217,7 +219,7 @@
         .recipe-card h3 { font-size: 1.4rem; color: #8b5e3c; }
 
         .card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-        .badge { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-family: Arial, sans-serif; }
+        .badge { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-family: 'DM Sans', Arial, sans-serif; }
         .badge-nausea { background-color: #d4edda; color: #2d6a4f; }
         .badge-mouth-sores { background-color: #cce5ff; color: #1a4f7a; }
         .badge-no-appetite { background-color: #fff3cd; color: #7a5c0a; }
@@ -252,17 +254,17 @@
         }
         .btn-add-log {
             padding: 0.5rem 1.25rem; background-color: #c28b5e; color: #fdf6ee;
-            border: none; border-radius: 20px; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
+            border: none; border-radius: 20px; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
         }
         .btn-add-log:hover { background-color: #8b5e3c; }
         .btn-print {
             padding: 0.5rem 1.25rem; background: none; border: 1px solid #c28b5e;
-            border-radius: 20px; color: #8b5e3c; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
+            border-radius: 20px; color: #8b5e3c; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
         }
         .btn-print:hover { background-color: #f5e6d3; }
         .btn-boost {
             padding: 0.5rem 1.25rem; background: none; border: 1px solid #e0a070;
-            border-radius: 20px; color: #c25a20; font-family: Georgia, serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
+            border-radius: 20px; color: #c25a20; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s;
         }
         .btn-boost:hover { background-color: #fdebd0; }
 
@@ -4580,7 +4582,7 @@
             const name = card.querySelector('h3').textContent;
             const win = window.open('', '_blank', 'width=700,height=900');
             win.document.write(`<!DOCTYPE html><html><head><title>${name}</title><style>
-                body{font-family:Georgia,serif;color:#333;padding:2rem;max-width:600px;margin:0 auto;}
+                body{font-family:'DM Sans',Georgia,sans-serif;color:#333;padding:2rem;max-width:600px;margin:0 auto;}
                 h2{color:#8b5e3c;margin-bottom:0.25rem;}
                 .meta{font-size:0.85rem;color:#888;margin-bottom:1rem;}
                 .note{background:#fef3e8;border-left:3px solid #c28b5e;padding:0.5rem 0.75rem;margin-bottom:1rem;font-size:0.9rem;}
