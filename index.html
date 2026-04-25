@@ -139,7 +139,17 @@
         }
         .disclaimer strong { color: #8b5e3c; }
         .filter-group { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
-        .filter-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #a07050; min-width: 90px; }
+        .filter-label {
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #a07050; min-width: 90px;
+            cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 0.35rem;
+            background: none; border: none; padding: 0.25rem 0; font-family: inherit;
+        }
+        .filter-label::after {
+            content: '\25BE'; font-size: 0.75rem; color: #c28b5e; transition: transform 0.2s ease;
+        }
+        .filter-group.open .filter-label::after { transform: rotate(180deg); }
+        .filter-label:hover { color: #8b5e3c; }
+        .filter-group:not(.open) .filter-btn { display: none; }
         .filter-btn {
             padding: 0.35rem 0.85rem; border: 1px solid #c28b5e; border-radius: 20px;
             background: none; color: #8b5e3c; font-family: 'DM Sans', Georgia, sans-serif; font-size: 0.875rem; cursor: pointer; transition: background-color 0.15s, color 0.15s;
@@ -423,22 +433,22 @@
 
     <!-- Filters -->
     <div class="filters">
-        <div class="filter-group">
-            <span class="filter-label">Symptoms:</span>
+        <div class="filter-group" data-filter-type="symptom">
+            <button type="button" class="filter-label" aria-expanded="false">Symptoms</button>
             <button class="filter-btn active" data-symptom="all">All</button>
             <button class="filter-btn" data-symptom="nausea">I have nausea</button>
             <button class="filter-btn" data-symptom="mouth-sores">I have mouth sores</button>
             <button class="filter-btn" data-symptom="no-appetite">I have no appetite</button>
         </div>
-        <div class="filter-group">
-            <span class="filter-label">Texture:</span>
+        <div class="filter-group" data-filter-type="texture">
+            <button type="button" class="filter-label" aria-expanded="false">Texture</button>
             <button class="filter-btn active" data-texture="all">All</button>
             <button class="filter-btn" data-texture="liquid">Liquid</button>
             <button class="filter-btn" data-texture="soft">Soft</button>
             <button class="filter-btn" data-texture="finger-food">Finger Foods</button>
         </div>
-        <div class="filter-group">
-            <span class="filter-label">Ingredient:</span>
+        <div class="filter-group" data-filter-type="ingredient">
+            <button type="button" class="filter-label" aria-expanded="false">Ingredient</button>
             <button class="filter-btn active" data-ingredient="all">All</button>
             <button class="filter-btn" data-ingredient="chicken">Chicken</button>
             <button class="filter-btn" data-ingredient="turkey">Turkey</button>
@@ -5038,6 +5048,16 @@
             link.addEventListener('click', e => {
                 e.preventDefault();
                 showSection(link.dataset.section);
+            });
+        });
+
+        // --- Filter group dropdown toggle (only opens its own group) ---
+        document.querySelectorAll('.filter-group .filter-label').forEach(label => {
+            label.addEventListener('click', e => {
+                e.stopPropagation();
+                const group = label.closest('.filter-group');
+                const isOpen = group.classList.toggle('open');
+                label.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             });
         });
 
