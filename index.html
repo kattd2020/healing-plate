@@ -5106,30 +5106,24 @@
             });
         });
 
-        // --- Filter button event listeners (scoped to .filter-btn only) ---
-        document.querySelectorAll('.filter-btn[data-symptom]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn[data-symptom]').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeSymptom = btn.dataset.symptom;
-                applyFilters();
-            });
-        });
+        // --- Filter button event listeners ---
+        // Each filter group is scoped to its own .filter-group parent, so
+        // clicking a button only ever changes the active state within its
+        // own row. Other filter rows are never touched.
+        document.querySelectorAll('.filters .filter-group').forEach(group => {
+            group.addEventListener('click', e => {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn || !group.contains(btn)) return;
 
-        document.querySelectorAll('.filter-btn[data-texture]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn[data-texture]').forEach(b => b.classList.remove('active'));
+                // Deactivate only siblings inside this same group
+                group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                activeTexture = btn.dataset.texture;
-                applyFilters();
-            });
-        });
 
-        document.querySelectorAll('.filter-btn[data-ingredient]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn[data-ingredient]').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeIngredient = btn.dataset.ingredient;
+                // Update only the state variable for this group's filter type
+                if (btn.dataset.symptom    !== undefined) activeSymptom    = btn.dataset.symptom;
+                if (btn.dataset.texture    !== undefined) activeTexture    = btn.dataset.texture;
+                if (btn.dataset.ingredient !== undefined) activeIngredient = btn.dataset.ingredient;
+
                 applyFilters();
             });
         });
