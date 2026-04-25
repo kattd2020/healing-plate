@@ -5112,21 +5112,21 @@
         });
 
         // --- Filter button event listeners ---
-        // Each .filter-group has data-filter-type; clicks are delegated to
-        // the group itself, so deactivation is strictly bounded to siblings
-        // inside that group. State is stored per-type in filterState[type],
-        // so other filter groups' values are mathematically untouchable here.
+        // Direct handler per button. Each handler captures `group` and `type`
+        // via closure, so it can ONLY ever:
+        //   1. Deactivate buttons inside its own .filter-group parent
+        //   2. Write to filterState[type] for its own filter type
+        // There is no code path here that can reach another filter group.
         document.querySelectorAll('.filters .filter-group').forEach(group => {
             const type = group.dataset.filterType;
-            group.addEventListener('click', e => {
-                const btn = e.target.closest('.filter-btn');
-                if (!btn || !group.contains(btn)) return;
-
-                group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                filterState[type] = btn.dataset.value;
-                applyFilters();
+            const buttons = group.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterState[type] = btn.dataset.value;
+                    applyFilters();
+                });
             });
         });
 
