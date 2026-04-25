@@ -5136,15 +5136,20 @@
         });
 
         function applyFilters() {
+            // Snapshot section visibility at the start. We restore this at the
+            // end so applyFilters can NEVER open or close a section. Only the
+            // top nav (showSection) controls which sections are visible.
+            const sectionWasActive = new Map();
+            document.querySelectorAll('main > section').forEach(s => {
+                sectionWasActive.set(s, s.classList.contains('active'));
+            });
+
             const { symptom: aSymptom, texture: aTexture, ingredient: aIngredient } = filterState;
             const anyFilterActive = aSymptom    !== 'all'
                                  || aTexture    !== 'all'
                                  || aIngredient !== 'all'
                                  || searchQuery !== '';
 
-            // Filters narrow what's currently visible. They no longer
-            // auto-reveal other sections — the user controls which
-            // sections are open via the top nav.
             document.querySelectorAll('.recipe-card').forEach(card => {
                 const symptoms    = (card.dataset.symptoms   || '').split(',');
                 const ingredients = (card.dataset.ingredient || '').split(',');
@@ -5161,6 +5166,12 @@
                 }
 
                 card.classList.toggle('hidden', !(symptomMatch && textureMatch && ingredientMatch && searchMatch));
+            });
+
+            // Restore section visibility exactly as it was. Filter clicks
+            // CANNOT open or close any section — period.
+            sectionWasActive.forEach((wasActive, section) => {
+                section.classList.toggle('active', wasActive);
             });
 
             // Welcome message: show only when no section is open and no filter is active
