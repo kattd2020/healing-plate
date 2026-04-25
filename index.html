@@ -5136,14 +5136,6 @@
         });
 
         function applyFilters() {
-            // Snapshot section visibility at the start. We restore this at the
-            // end so applyFilters can NEVER open or close a section. Only the
-            // top nav (showSection) controls which sections are visible.
-            const sectionWasActive = new Map();
-            document.querySelectorAll('main > section').forEach(s => {
-                sectionWasActive.set(s, s.classList.contains('active'));
-            });
-
             const { symptom: aSymptom, texture: aTexture, ingredient: aIngredient } = filterState;
             const anyFilterActive = aSymptom    !== 'all'
                                  || aTexture    !== 'all'
@@ -5168,16 +5160,20 @@
                 card.classList.toggle('hidden', !(symptomMatch && textureMatch && ingredientMatch && searchMatch));
             });
 
-            // Restore section visibility exactly as it was. Filter clicks
-            // CANNOT open or close any section — period.
-            sectionWasActive.forEach((wasActive, section) => {
-                section.classList.toggle('active', wasActive);
-            });
-
-            // Welcome message: show only when no section is open and no filter is active
-            const anySectionActive = document.querySelector('main > section.active');
-            document.getElementById('welcome-msg').style.display =
-                (!anySectionActive && !anyFilterActive) ? '' : 'none';
+            if (anyFilterActive) {
+                // Show ONLY sections that have at least one matching recipe.
+                // Sections with zero matches are fully hidden (heading + body).
+                document.querySelectorAll('main > section').forEach(section => {
+                    const hasVisible = section.querySelector('.recipe-card:not(.hidden)');
+                    section.classList.toggle('active', !!hasVisible);
+                });
+                document.getElementById('welcome-msg').style.display = 'none';
+                document.querySelectorAll('nav a[data-section]').forEach(a => a.classList.remove('active'));
+            } else {
+                // No filter active: respect whatever section the user opened via nav.
+                const anySectionActive = document.querySelector('main > section.active');
+                document.getElementById('welcome-msg').style.display = anySectionActive ? 'none' : '';
+            }
         }
 
         // --- Toast ---
